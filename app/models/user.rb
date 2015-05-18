@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
     
     after_initialize :set_default_role, :if => :new_record?
-    has_many :business
+    has_many :employees, :foreign_key => 'user_id', :class_name => "User"
+    belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
     
     private
     def set_default_role
