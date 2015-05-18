@@ -10,16 +10,20 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="<%= root_path %>">
                         Zonabeta
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<%= root_path %>">Inicio</a></li>
-                        <li><a href="<%= user_session_path %>">Login</a></li>
-                        <li><a href="<%= new_user_registration_path %>">Registrarte</a></li>
+                        <% if !current_user %>                            
+                            <li><a href="<%= user_session_path %>">Login</a></li>
+                            <li><a href="<%= new_user_registration_path %>">Registrarte</a></li>
+                        <% else %>
+                        <li><a href="<%= edit_user_registration_path %>"><%= current_user.name %></a></li>
                         <li><a href="<%= destroy_user_session_path %>">Logout</a></li>
+                        <% end %>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>

@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
     
     after_initialize :set_default_role, :if => :new_record?
-
+    has_many :business
+    
     private
     def set_default_role
         unless self.role

@@ -12,6 +12,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pry-rails'
 gem 'devise'
+# gem 'elasticsearch-model'
+# gem 'elasticsearch-rails'
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
