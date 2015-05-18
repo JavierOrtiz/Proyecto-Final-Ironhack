@@ -2,6 +2,10 @@ class ControlController < ApplicationController
     before_action :authenticate_user!
     before_action :admin_only, only: [:admin]
     
+    def index
+        
+    end
+    
     private
     def admin_only         
         if current_user.role != 'admin'
