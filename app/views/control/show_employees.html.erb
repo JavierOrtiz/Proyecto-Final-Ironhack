@@ -1,9 +1,19 @@
 <!-- Page Heading -->
+<style>
+    body.modal-open #wrap{
+        -webkit-filter: blur(7px);
+        -moz-filter: blur(15px);
+        -o-filter: blur(15px);
+        -ms-filter: blur(15px);
+        filter: blur(15px);
+    }
 
+    .modal-backdrop {background: #f7f7f7;}
+</style>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Escritorio <small>Statistics Overview</small>
+            Escritorio <small>Statistics Overview</small><a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Añadir empleado</a>
         </h1>
 
         <ol class="breadcrumb">
@@ -50,6 +60,20 @@
             </div>
         </div>
     <% end %>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <h1>URL de invitacion</h1>
+                    <p class="well">http://localhost:3000/invitate?q=<%= current_user.invitationHash %></p>
+                    <h4><kbd>esc</kbd> o pulsa cualquier lugar</h4>
+                    <hr>
+                    <div class="alert alert-info"><h4>I can add a close button if you want.<br>Please, tell me in comments :)</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--
     <div class="col-sm-3">
         <div class="card">

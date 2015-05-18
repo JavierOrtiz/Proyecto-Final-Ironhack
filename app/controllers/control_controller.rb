@@ -11,7 +11,11 @@ class ControlController < ApplicationController
         @people = User.find current_user.id
         @employees = @people.employees
         @boss = @people.boss
-        render 'show_employees'
+    end
+    
+    def show_events
+        @owner = User.find current_user.id
+        @events = @owner.events
     end
     
 #    private

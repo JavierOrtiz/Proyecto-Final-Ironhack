@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     devise_for :users
     root 'home#index'
     get '/control/employees' => 'control#show_employees'
+    get '/control/events' => 'control#show_events'
+
     resources :home
     resources :control
 
