@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
     
-  devise_for :users
+    devise_for :users
     root 'home#index'
+    get '/control/employees' => 'control#show_employees'
     resources :home
     resources :control
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
