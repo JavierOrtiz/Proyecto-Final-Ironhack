@@ -12,6 +12,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pry-rails'
 gem 'devise'
+gem 'groupdate'
+gem "chartkick"
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'
 # Use CoffeeScript for .coffee assets and views

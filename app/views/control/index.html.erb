@@ -114,7 +114,7 @@
                 <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
             </div>
             <div class="panel-body">
-                <div id="morris-area-chart"></div>
+                <%= line_chart User.group_by_week(:created_at).count %>
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
                 <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
             </div>
             <div class="panel-body">
-                <div id="morris-donut-chart"></div>
+                <%= pie_chart Event.group(:house).count %>
                 <div class="text-right">
                     <a href="#">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
                 </div>

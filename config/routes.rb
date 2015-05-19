@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get '/control/events' => 'control#show_events'
 
     resources :home
+    namespace :control do
+        resources :users, only:[:create,:update,:destroy,:show]
+        resources :events, only:[:create,:update,:destroy,:show]
+    end
     resources :control
 
   # The priority is based upon order of creation: first created -> highest priority.

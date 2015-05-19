@@ -55,7 +55,7 @@
                 <div class="content">
                     <p><%= employee.name %> <br>
                         <%= employee.email %></p>
-                    <p><button type="button" class="btn btn-default">Contacto</button></p>
+                    <p><a type="button" class="btn btn-default" href="<%= control_user_path(employee.id) %>">Ver info</a></p>
                 </div>
             </div>
         </div>
