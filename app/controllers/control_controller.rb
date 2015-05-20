@@ -5,6 +5,11 @@ class ControlController < ApplicationController
     
     def index
         @people = User.find current_user.id
+        @events = current_user.events
+        if @events.size == 0
+            @boss = current_user.boss
+            @events = @boss.events
+        end       
     end
     
     def show_employees

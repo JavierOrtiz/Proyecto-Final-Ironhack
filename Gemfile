@@ -13,7 +13,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pry-rails'
 gem 'devise'
 gem 'groupdate'
-gem "chartkick"
+# gem "chartkick"
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'
 # Use CoffeeScript for .coffee assets and views

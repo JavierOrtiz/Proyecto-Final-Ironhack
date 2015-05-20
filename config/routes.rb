@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
     resources :home
     namespace :control do
-        resources :users, only:[:create,:update,:destroy,:show]
-        resources :events, only:[:create,:update,:destroy,:show]
+        resources :users, only:[:create,:update,:destroy,:show, :new]
+        resources :events, only:[:create,:update,:destroy,:show, :new]
     end
     resources :control
 

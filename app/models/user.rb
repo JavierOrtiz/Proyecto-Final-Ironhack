@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
     
     after_initialize :set_default_role, :if => :new_record?
     after_initialize :set_default_invitationHash, :if => :new_record?
+    
+    # Aqui creamos las relacciones y el inverso de ellas.
     has_many :employees, :foreign_key => 'user_id', :class_name => "User"
     has_many :events
     belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
