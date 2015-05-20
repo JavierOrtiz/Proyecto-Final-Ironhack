@@ -19,13 +19,15 @@ class ControlController < ApplicationController
     end
     
     def show_events
-        if !current_user.boss
+        if current_user.boss == nil
             @events = current_user.events
-        else
+        else        
             @boss = current_user.boss
-            @events = @boss.events
-        end        
+            @boss_events = @boss.events
+            @events = current_user.events
+        end
     end
+
     
 #    private
 #    def admin_only         

@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520064941) do
+ActiveRecord::Schema.define(version: 20150520084443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "assignation_date"
+    t.datetime "assignation_end_date"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "assignations", ["event_id"], name: "index_assignations_on_event_id", using: :btree
+  add_index "assignations", ["user_id"], name: "index_assignations_on_user_id", using: :btree
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"

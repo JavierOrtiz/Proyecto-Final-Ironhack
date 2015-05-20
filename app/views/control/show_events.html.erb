@@ -1,21 +1,77 @@
 <link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-<% if @events.empty? %>
+<% if @boss_event %>
 <div class="alert alert-danger alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <strong>Error!</strong> No tienes eventos asignados <% if !current_user.boss %>, empieza<span class=""><a href="#" class="btn btn-success btn-xs">creando tu primer evento</a></span><% end %>
 </div>
 <% end %>
-<% if !current_user.boss %><span class=""><a href="#" class="btn btn-success">CREAR EVENTO</a></span><% end %>
+
+<% if !current_user.boss %><span class=""><a href="<%= new_control_event_path %>" class="btn btn-success">CREAR EVENTO</a></span><% end %>
  <hr>
-  <% @events.each do |event| %>
-   <div class="col-md-3">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><%= event.title %> <a href="#" class="btn btn-success btn-xs pull-right">Ver evento</a></h3>
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Elegidos</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Disponibles</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Antiguos</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Ajustes</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <% @events.each do |event| %>
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <%= event.title %>                 
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <img src="<%= event.flyer %>" class="thumbnail" alt="<%= event.title %>" width="100%" height="auto">
+                        <% if event.user_id == current_user.id %>
+                        <a href="<%= control_event_take_path(event.id) %>" class="btn btn-success btn-xs pull-right">Editar</a>
+                        <% else %>
+                        <a href="<%= control_event_drop_path(event.id) %>" class="btn btn-danger btn-xs pull-right">Soltar</a>
+                        <a href="<%= control_event_take_path(event.id) %>" class="btn btn-success btn-xs pull-right">Solicitar</a>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
         </div>
-        <div class="panel-body">
-            <img src="<%= event.flyer %>" class="thumbnail" alt="<%= event.title %>" width="100%" height="auto">
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <% if @boss %>
+                <% @boss_events.each do |event| %>
+                <div class="col-md-2">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <%= event.title %>              
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <img src="<%= event.flyer %>" class="thumbnail" alt="<%= event.title %>" width="100%" height="auto">
+                            <% if event.user_id == current_user.id %>
+                            <a href="<%= control_event_take_path(event.id) %>" class="btn btn-success btn-xs pull-right">Editar</a>
+                            <% else %>
+                            <span class="label label-warning label-xs"><%= event.house %></span>
+                            <a href="<%= control_event_take_path(event.id) %>" class="btn btn-success btn-xs pull-right">Solicitar</a>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            <% end %>
         </div>
+        <div role="tabpanel" class="tab-pane" id="messages">
+            
+        </div>
+        <div role="tabpanel" class="tab-pane" id="settings">...</div>
     </div>
+
 </div>
-<% end %>
+
+

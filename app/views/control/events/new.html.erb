@@ -5,46 +5,67 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Error:</strong><%= error_msg %></div>
         <% end %>
         <% end %>
-    <h1>Crear nuevo proyecto <span class="pull-right"><a href="<%= control_events_path %>" class="btn btn-primary btn-xs" role="button">Volver</a></span></h1>
+    <h1>Crear nuevo evento <span class="pull-right"><a href="<%= control_events_path %>" class="btn btn-primary btn-xs" role="button">Volver</a></span></h1>
     <div class="col-md-6">
         <%= form_for [:control, @event] do |f| %>
         
         <div class="form-group">
-        <%= f.label :Locate %>
-        <%= f.text_field :locate, class: 'form-control' %>
+            <%= f.label :Ubicacion %>
+            <%= f.text_field :locate, class: 'form-control' %>
         </div>
         
         <div class="form-group">
-        <%= f.label :House %>
-        <%= f.text_field :house, class: 'form-control' %>
+            <%= f.label :Discoteca %>
+            <%= f.text_field :house, class: 'form-control' %>
         </div>
         <div class="form-group">
-        <%= f.label :Capacity %>
-        <%= f.text_field :capacity, class: 'form-control' %>
-            </div>
+            <%= f.label :Cuota %>
+            <div class="input-group">
+                <%= f.text_field :capacity, class: 'form-control', id: 'exampleInputAmount' %>
+                <div class="input-group-addon">Entradas</div>
+            </div>           
+        </div>
         <div class="form-group">
-        <%= f.label :Commission %>
-        <%= f.text_field :commission, class: 'form-control' %>
+            <div class="col-md-6">
+                <%= f.label :Comision %>
+                <div class="input-group">
+                    <%= f.text_field :commission, class: 'form-control', id: 'exampleInputAmount' %>
+                    <div class="input-group-addon">€</div>
+                </div>
             </div>
+            <div class="col-md-6">
+                <%= f.label :Precio %>
+                <div class="input-group">
+                    <div class="input-group-addon">Unidad</div>
+                        <%= f.text_field :price, class: 'form-control', id: 'exampleInputAmount' %>
+                    <div class="input-group-addon">€</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
         
         <div class="form-group">
-        <%= f.label :date %>
-        <%= f.date_field :date, class: 'form-control' %>
+            <%= f.label :Fecha %>
+            <%= f.date_field :date, class: 'form-control' %>
         </div>
         <div class="form-group">
-            <%= f.label :title %>
+            <%= f.label :Fiesta %>
             <%= f.text_field :title, class: 'form-control' %>
         </div>
         <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: 'form-control' %>
-            </div>
+            <%= f.label :Informacion %>
+            <%= f.text_area :description, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.label :Usuario %>
+            <input class="form-control" type="text"  value="<%= current_user.id %>" readonly>
+        </div>
         
-        <%= f.submit 'Crear entry', class:'btn btn-success btn-block' %>
+        
         			
     </div>
+    <%= f.submit 'Crear evento', class:'btn btn-success pull-right btn-lg' %>
         <% end %>
     </div>
 </div>

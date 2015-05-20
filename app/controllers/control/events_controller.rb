@@ -13,17 +13,40 @@ class Control::EventsController < ApplicationController
     
     def create
         @event = Event.new event_params
-
+        @event.user_id = current_user.id
+        @event.flyer = 'http://placehold.it/400x600'
+        
         if @event.save
-            redirect_to control_event_path(@event)
+            user = current_user
+            user.events.push(@event)
+            redirect_to control_events_path, :alert => "Creado correctamente"
         else
-            render 'new'
+            redirect_to new_control_event_path, :alert => "Se ha producido un error"
         end
+    end
+    
+    def take
+        event = Event.find params[:id]
+        recurso = Assignation.where(user_id: current_user.id, event_id: event.id)
+        if recurso.size == 1
+            redirect_to control_events_path, :alert => "Error, el evento ya existe"
+        else
+            user = current_user
+            user.events.push(event)
+            redirect_to control_events_path, :alert => "Asignado correctamente"
+        end        
+    end
+    
+    def drop
+        recurso = Assignation.where(user_id: current_user.id, event_id: params[:id])
+        recurso.first.destroy
+        redirect_to(control_events_path(), :alert => "Soltado correctamente")
+  
     end
     
     private
     
     def event_params
-        params.require(:event).permit(:title, :description, :commission, :capacity, :house, :date, :locate, :flyer)
+        params.require(:event).permit(:title, :description, :commission, :capacity, :house, :date, :locate, :flyer, :price)
     end
 end

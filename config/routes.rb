@@ -4,13 +4,17 @@ Rails.application.routes.draw do
     root 'home#index'
     get '/control/employees' => 'control#show_employees'
     get '/control/events' => 'control#show_events'
+    get '/invitacion' => 'devise/registrations#new'
+    get '/control/events/take/:id' => 'control/events#take', as: :control_event_take
+    get '/control/events/drop/:id' => 'control/events#drop', as: :control_event_drop
 
-    resources :home
+
+    resources :home, only:[:index]
     namespace :control do
-        resources :users, only:[:create,:update,:destroy,:show, :new]
+        resources :users, only:[:create,:update,:destroy,:show, :new, :edit]
         resources :events, only:[:create,:update,:destroy,:show, :new]
     end
-    resources :control
+    resources :control, only:[:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
