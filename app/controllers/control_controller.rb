@@ -12,15 +12,19 @@ class ControlController < ApplicationController
         end       
     end
     
-    def show_employees
+    def show_employees        
         @people = User.find current_user.id
         @employees = @people.employees
         @boss = @people.boss
     end
     
     def show_events
-        @owner = User.find current_user.id
-        @events = @owner.events
+        if !current_user.boss
+            @events = current_user.events
+        else
+            @boss = current_user.boss
+            @events = @boss.events
+        end        
     end
     
 #    private
