@@ -27,6 +27,10 @@ class ControlController < ApplicationController
             @events = current_user.events
         end
     end
+    
+    def show_sales      
+        @sales = Sale.all
+    end
 
     
 #    private
