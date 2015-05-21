@@ -14,7 +14,7 @@ gem 'pry-rails'
 gem 'devise'
 gem 'groupdate'
 gem 'whenever'
-# gem "chartkick"
+gem "chartkick"
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'
 # Use CoffeeScript for .coffee assets and views

@@ -5,7 +5,7 @@
                 <h3 class="panel-title">Servidor</h3>
             </div>
             <div class="panel-body">
-                Panel content
+                <%= pie_chart Sale.group(:user_id).count %>
             </div>
         </div>
     </div>
