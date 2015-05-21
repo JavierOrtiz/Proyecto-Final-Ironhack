@@ -8,7 +8,7 @@ class Control::SalesController < ApplicationController
     end
     
     def create
-
+        
     end
     
     def destroy

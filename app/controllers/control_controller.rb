@@ -4,32 +4,44 @@ class ControlController < ApplicationController
     layout 'admin_user'
     
     def index
-        @people = User.find current_user.id
-        @events = current_user.events
+        @employees = current_employees
+        @events = current_events
+        @sales = current_sales.size
+        @employees.each do |employee|
+            @sales += Sale.get_sum(employee.id, "cuantity")
+        end
+        
         if @events.size == 0
-            @boss = current_user.boss
-            @events = @boss.events
+            @events = current_boss.events
         end       
     end
     
     def show_employees        
-        @people = User.find current_user.id
-        @employees = @people.employees
-        @boss = @people.boss
+        @employees = current_employees
+        @boss = current_boss
     end
     
     def show_events
         if current_user.boss == nil
-            @events = current_user.events
+            @events = current_events
         else        
-            @boss = current_user.boss
+            @boss = current_boss
             @boss_events = @boss.events
-            @events = current_user.events
+            @events = current_events
         end
     end
     
     def show_sales      
         @sales = Sale.all
+        @my_total = [Sale.get_sum(current_user.id, "total"), Sale.get_sum(current_user.id, "cuantity")]
+        @boss_total = [ Sale.get_sum(current_boss.id, "total"), Sale.get_sum(current_boss.id, "cuantity")]
+        @total_team = 0
+        @total_entradas = 0
+        current_employees.each do |employee|
+            @total_team += Sale.get_sum(employee.id, "total")
+            @total_entradas += Sale.get_sum(employee.id, "cuantity")       
+        end
+        
     end
 
     

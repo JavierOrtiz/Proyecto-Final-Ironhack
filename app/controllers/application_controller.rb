@@ -6,6 +6,19 @@ class ApplicationController < ActionController::Base
     before_filter :configure_permitted_parameters, if: :devise_controller?
 
 
+    def current_boss
+        @currentBoss ||= current_user.boss
+    end
+    def current_events
+        @currentEvents ||= current_user.events
+    end
+    def current_sales
+        @currentSales ||= current_user.sales
+    end
+    def current_employees
+        @currentEmployees ||= current_user.employees
+    end
+    
     protected
 
     def layout_by_resource

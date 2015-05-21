@@ -1,6 +1,6 @@
 
 
-<div class="col-lg-8">
+<div class="col-md-8">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Panel de transaciones</h3>
@@ -10,11 +10,12 @@
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>Venta #</th>
-                            <th>Pedido</th>
+                            <th>#</th>
+                            <th>Creada</th>
+                            <th>Procesada</th>
                             <th>Estado</th>
-                            <th>Finalizado</th>
                             <th>Cantidad</th>
+                            <th>Evento</th>
                             <th>Vendedor</th>
                             <th>Comprador</th>
                             <th>Total</th>
@@ -25,12 +26,13 @@
                             <tr>
                                 <td><%= sale.id %></td>
                                 <td><%= sale.sold %></td>
-                                <td><%= sale.status %></td>
                                 <td><%= sale.processed %></td>
+                                <td><%= sale.status %></td>
                                 <td><%= sale.cuantity %></td>
-                                <td><%= sale.user.name %></td>
+                                <td><%= sale.event.title %></td>    
+                                <td><%= sale.user.name %></td>    
                                 <td><%= sale.buyer %></td>
-                                <td><%= sale.total %></td>
+                                <td><%= sale.total %> <i class="fa fa-eur"></i></td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -41,4 +43,9 @@
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-4">
+    <h1><%= @total_entradas + @my_total[1] + @boss_total[1] %> <small>entradas vendidas</small></h1>
+    <h1><%= @my_total[0] %> <small>€ vendido por mi</small></h1>
+    <h1><%= @total_team + @my_total[0] + @boss_total[0] %> <small>€ ventas de equipo</small></h1>
 </div>
