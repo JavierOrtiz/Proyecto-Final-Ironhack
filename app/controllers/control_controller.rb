@@ -13,7 +13,7 @@ class ControlController < ApplicationController
         
         if @events.size == 0
             @events = current_boss.events
-        end       
+        end    
     end
     
     def show_employees        
@@ -34,14 +34,17 @@ class ControlController < ApplicationController
     def show_sales      
         @sales = Sale.all
         @my_total = [Sale.get_sum(current_user.id, "total"), Sale.get_sum(current_user.id, "cuantity")]
-        @boss_total = [ Sale.get_sum(current_boss.id, "total"), Sale.get_sum(current_boss.id, "cuantity")]
+        if current_boss
+            @boss_total = [ Sale.get_sum(current_boss.id, "total"), Sale.get_sum(current_boss.id, "cuantity")]
+        else
+            @boss_total = [0,0]
+        end
         @total_team = 0
         @total_entradas = 0
         current_employees.each do |employee|
             @total_team += Sale.get_sum(employee.id, "total")
             @total_entradas += Sale.get_sum(employee.id, "cuantity")       
-        end
-        
+        end        
     end
 
     

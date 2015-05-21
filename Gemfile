@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pry-rails'
 gem 'devise'
 gem 'groupdate'
+gem 'whenever'
 # gem "chartkick"
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'

@@ -6,6 +6,9 @@ class Sale < ActiveRecord::Base
     def self.get_sum(id, column)
         where(user_id: id).sum(column)
     end
+    def self.get_total(column)
+       all.sum(column)
+    end
 
 #    def self.get_total_team(id)
 #        me = User.find id

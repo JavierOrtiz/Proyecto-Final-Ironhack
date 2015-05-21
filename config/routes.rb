@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get '/control/events/take/:id' => 'control/events#take', as: :control_event_take
     get '/control/events/drop/:id' => 'control/events#drop', as: :control_event_drop
 
-
+    resources :sauron, only:[:index]
     resources :home, only:[:index]
     namespace :control do
         resources :users, only:[:create,:update,:destroy,:show, :new, :edit]
