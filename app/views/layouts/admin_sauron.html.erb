@@ -14,10 +14,11 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-
         <!-- Custom CSS -->
         <link href="/assets/css/sb-admin.css" rel="stylesheet">
+        <%= javascript_include_tag "/assets/js/jsapi.js", "chartkick" %>
 
+    
         <!-- Custom Fonts -->
         <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -115,12 +116,7 @@
             <!-- jQuery -->
             <script src="/assets/js/jquery.js"></script>
             <script src="/assets/js/canvas.js"></script>
-            <script>
-                $.getScript('http://www.google.com/jsapi',function(){
-                    //this is your callback function to execute after the script loads
-                    alert("Hello! I am an alert box!!");
-                });
-        </script>
+
             <!-- Bootstrap Core JavaScript -->
             <script src="/assets/js/bootstrap.min.js"></script>
 
@@ -128,6 +124,7 @@
             <script src="/assets/js/plugins/morris/raphael.min.js"></script>
             <script src="/assets/js/plugins/morris/morris.min.js"></script>
             <script src="/assets/js/plugins/morris/morris-data.js"></script>
+
 
 
             </body>
