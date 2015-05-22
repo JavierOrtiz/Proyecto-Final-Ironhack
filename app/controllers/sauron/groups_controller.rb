@@ -12,6 +12,10 @@ class Sauron::GroupsController < ApplicationController
         end
     end
     
+    def block
+        @blocked = User.find params[:id]
+    end
+    
     private
     def admin_only         
         if current_user.role != 'admin'
