@@ -52,13 +52,12 @@ ActiveRecord::Schema.define(version: 20150522134201) do
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
-    t.date     "date_send"
     t.string   "status"
     t.string   "title"
     t.text     "content"
     t.integer  "to"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
