@@ -18,7 +18,9 @@ class ApplicationController < ActionController::Base
     def current_employees
         @currentEmployees ||= current_user.employees
     end
-    
+    def current_messages
+        @currentMessages ||= current_user.messages
+    end
     protected
 
     def layout_by_resource

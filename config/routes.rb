@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get '/control/employees' => 'control#show_employees'
     get '/control/events' => 'control#show_events'
     get '/control/sales' => 'control#show_sales'
+    get '/control/messages' => 'control#show_messages', as: :control_messages
+    get '/control/messages/:id/read' => 'control/messages#mark_read', as: :control_read_message
+
+
     
     get '/sauron/groups' => 'sauron#show_groups'
     get '/sauron/groups/:id/block' => 'sauron/groups#change_status', as: :sauron_group_block
@@ -21,6 +25,7 @@ Rails.application.routes.draw do
     resources :sauron, only:[:index]
     
     namespace :control do
+        resources :messages
         resources :users, only:[:create,:update,:destroy,:show, :new, :edit]
         resources :events, only:[:create,:update,:destroy,:show, :new]
         resources :sales, only:[:create,:update,:destroy,:show, :new]

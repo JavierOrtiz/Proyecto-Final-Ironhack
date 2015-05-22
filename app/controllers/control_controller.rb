@@ -16,6 +16,11 @@ class ControlController < ApplicationController
         end    
     end
     
+    def show_messages
+        @send_messages = current_messages.order("created_at DESC")
+        @received_messages = Message.where(to: current_user.id).order("created_at DESC")        
+    end
+    
     def show_employees        
         @employees = current_employees
         @boss = current_boss
