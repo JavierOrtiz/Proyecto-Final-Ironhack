@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get '/control/events' => 'control#show_events'
     get '/control/sales' => 'control#show_sales'
     
+    get '/sauron/groups' => 'sauron#show_groups'
+    
     get '/invitacion' => 'devise/registrations#new'
     
     get '/control/events/take/:id' => 'control/events#take', as: :control_event_take

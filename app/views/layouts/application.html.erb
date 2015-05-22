@@ -5,6 +5,8 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
+        <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
     </head>
     <body id="page-top">
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -27,7 +29,10 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right"> 
                         <% if current_user %>
-                        <li><a href="<%= control_index_path %>" class="btn btn-default btn-xs">Administración</a></li>                        
+                        <% if current_user.role == 'admin' %>
+                        <li><a href="<%= sauron_index_path %>"><i class="fa fa-eye fa-2x"></i></a></li>  
+                        <% end %>
+                        <li><a href="<%= control_index_path %>"><i class="fa fa-tachometer fa-2x"></i></a></li>                        
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">                                
