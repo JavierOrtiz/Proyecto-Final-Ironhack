@@ -1,0 +1,35 @@
+<div class="container well">
+    <div class="row">
+        <% if @group == nil %>
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-info-circle"></i> Este grupo no tiene empleados que mostrar
+            </div>
+        <% end %>
+        <h2>Filtrado de empleados</h2>
+        <hr>
+        <% if @group != nil %>
+        <div class="searchable-container">
+            <% @group.each do |user| %>
+            <div class="items col-xs-12 col-sm-6 col-md-6 col-lg-6 clearfix">
+                <div class="info-block block-info clearfix">
+                    <div class="square-box pull-left">
+                        <span class="fa fa-user fa-5x"></span>
+                    </div>
+                    <h5>ID: <%= user.invitationHash %></h5>
+                    <h4>Jefe: <%= user.name %></h4>
+                    <p>Empleados: <span class="label label-success"> <i class="fa fa-users"></i></span></p>
+                    <span>Email: <%= user.email %></span><br>
+                    <a href="<%= sauron_group_path(user.id) %>" class="btn btn-warning btn-xs"><i class="fa fa-eye"></i> Ver equipo</a>
+                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-support"></i> Enviar mensaje</a>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <% else %>
+        <div class="col-md-6 col-md-offset-3">
+            <img src="/assets/images/workers.png" alt="">
+        </div>        
+        <% end %>
+    </div>
+</div>

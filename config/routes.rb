@@ -13,9 +13,12 @@ Rails.application.routes.draw do
     
     get '/control/events/take/:id' => 'control/events#take', as: :control_event_take
     get '/control/events/drop/:id' => 'control/events#drop', as: :control_event_drop
-
+    
+    namespace :sauron do
+        resources :groups
+    end
     resources :sauron, only:[:index]
-    resources :home, only:[:index]
+    
     namespace :control do
         resources :users, only:[:create,:update,:destroy,:show, :new, :edit]
         resources :events, only:[:create,:update,:destroy,:show, :new]
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
     end
     resources :control, only:[:index]
 
+    resources :home, only:[:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

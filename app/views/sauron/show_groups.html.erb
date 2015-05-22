@@ -16,8 +16,9 @@
                         <h4>Jefe: <%= user.name %></h4>
                         <p>Empleados: <span class="label label-success"><%= user.employees.size %> <i class="fa fa-users"></i></span></p>
                         <span>Email: <%= user.email %></span><br>
-                        <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-eye"></i> Ver equipo</a>
-                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-support"></i> Enviar mensaje</a>
+                        <a href="<%= sauron_group_path(user.id) %>" class="btn btn-warning btn-xs"><i class="fa fa-eye"></i> Ver equipo</a>
+                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-support"></i> Enviar mensaje al grupo</a>
+                        <a href="<%= sauron_group_path(user.id) %>" class="btn btn-danger btn-xs"><i class="fa fa-minus-circle"></i> Bloquear grupo</a>
                     </div>
                 </div>
             <% end %>
