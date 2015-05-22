@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
     has_many :employees, :foreign_key => 'user_id', :class_name => "User"
     has_many :assignations
     has_many :sales
+    has_many :messages
     has_many :events, :through => :assignations
     belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
     
