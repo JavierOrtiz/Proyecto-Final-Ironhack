@@ -22,7 +22,7 @@ class SauronController < ApplicationController
     private
     def admin_only         
         if current_user.role != 'admin'
-            redirect_to root_path, notice: 'Acceso denegado >:D'
+            redirect_to root_path, alert: 'Acceso denegado >:D'
         end
     end
 end

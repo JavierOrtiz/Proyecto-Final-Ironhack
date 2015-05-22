@@ -1,0 +1,2 @@
+module Sauron::GroupsHelper
+end
