@@ -16,7 +16,8 @@ class SauronController < ApplicationController
     end
     
     def show_groups
-        @groups = User.where(user_id: nil)
+        @groups = User.where(user_id: nil, status: 'activo')
+        @groups_blocks = User.where(user_id: nil, status: 'bloqueado')
     end
     
     private
