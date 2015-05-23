@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
     has_many :assignations
     has_many :sales
     has_many :messages
+    belongs_to :plan
     has_many :events, :through => :assignations
     belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
     
@@ -22,6 +23,7 @@ class User < ActiveRecord::Base
             self.invitationHash ||= SecureRandom.hex(13)
             self.photo ||= 'http://placehold.ir/250x250'
             self.status ||= 'activo'
+            self.plan ||= 1
         end
     end
 end
