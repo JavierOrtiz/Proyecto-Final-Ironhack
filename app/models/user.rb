@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
             self.invitationHash ||= SecureRandom.hex(13)
             self.photo ||= 'http://placehold.ir/250x250'
             self.status ||= 'activo'
-            self.plan ||= 1
+            self.plan_id ||= 2
         end
     end
 end
