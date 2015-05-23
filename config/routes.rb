@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     devise_for :users
     root 'home#index'
     
+    get '/invite' =>  'home#invite'
+    post '/invite' => 'home#create', as: :invitation_user
+    
     get '/control/employees' => 'control#show_employees'
     get '/control/events' => 'control#show_events'
     get '/control/sales' => 'control#show_sales'
