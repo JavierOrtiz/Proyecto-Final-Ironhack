@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     def current_messages
         @currentMessages ||= current_user.messages
     end
+    def current_plans
+        @currentPlan ||= current_user.plan
+    end
+
     protected
 
     def layout_by_resource

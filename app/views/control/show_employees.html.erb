@@ -10,16 +10,112 @@
 
     .modal-backdrop {background: #f7f7f7;}
 </style>
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Empleados <small>Lista</small><a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Añadir empleado</a>
+            Empleados 
+            <small>Lista</small>
+            <% if current_user.employees.size <= current_user.plan.max_users  %>
+            <a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Añadir empleado </a>
+            <% else %>
+            <a href="#" class="btn btn-warning pull-right" data-toggle="modal" data-target="#ampliar"><i class="fa fa-user"></i> Ampliar plan </a>
+            <% end %>
         </h1>
     </div>
 </div>
 <!-- /.row -->
 
-
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><%= @employees.size %></div>
+                        <div>Empleados</div>
+                    </div>
+                </div>
+            </div>
+            <a href="<%= control_employees_path %>">
+                <div class="panel-footer">
+                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-star fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><%= @events %></div>
+                        <div>Eventos</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-credit-card fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><%= @sales %></div>
+                        <div>Ventas</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-eur fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"><%= @commission %></div>
+                        <div>Beneficios</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 <div class="row">
     <% if @boss %>
         <div class="col-sm-3">
@@ -51,19 +147,7 @@
             </div>
         </div>
     <% end %>
-    <div class="col-sm-3">
-        <div class="card">
-            <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
-            <div class="avatar">
-                <img src="http://placehold.it/250x250" alt="" />
-            </div>
-            <div class="content">
-                <p>Web Developer <br>
-                    More description here</p>
-                <p><button type="button" class="btn btn-default">Contact</button></p>
-            </div>
-        </div>
-    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="container">
@@ -73,7 +157,18 @@
                     <p class="well">http://localhost:3000/invite?q=<%= current_user.invitationHash %></p>
                     <h4><kbd>esc</kbd> o pulsa cualquier lugar</h4>
                     <hr>
-                    <div class="alert alert-info"><h4>I can add a close button if you want.<br>Please, tell me in comments :)</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ampliar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <h1>Ampliar Plan</h1>
+                    <p class="well">Aumenta a mas usuarios con la version de pago.</p>
+                    <h4><kbd>esc</kbd> o pulsa cualquier lugar</h4>
+                    <hr>
                 </div>
             </div>
         </div>

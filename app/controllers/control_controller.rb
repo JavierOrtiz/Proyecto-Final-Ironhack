@@ -4,16 +4,21 @@ class ControlController < ApplicationController
     layout 'admin_user'
     
     def index
-        @employees = current_employees
-        @events = current_events
-        @sales = current_sales.size
-        @employees.each do |employee|
-            @sales += Sale.get_sum(employee.id, "cuantity")
-        end
-        
+        @employees = current_employees.size
+        @events = current_events.size
         if @events.size == 0
             @events = current_boss.events
-        end    
+        end
+        
+        @sales = 0
+        @commission = 0
+        current_sales.each do |sale|
+            @sales += sale.cuantity 
+            @commission += sale.event.commission.to_i * sale.cuantity
+        end
+#        current_employees.each do |employee|
+#            @sales += Sale.get_sum(employee.id, "cuantity")
+#        end
     end
     
     def show_messages
@@ -24,6 +29,22 @@ class ControlController < ApplicationController
     def show_employees        
         @employees = current_employees
         @boss = current_boss
+        @events = current_events.size
+        if @events.size == 0
+            @events = current_boss.events
+        end
+        @sales = 0
+        @commission = 0
+        current_sales.each do |sale|
+            @sales += sale.cuantity             
+            current_employees.each do |employee|
+                @sales += Sale.get_sum(employee.id, "cuantity")
+                employee.sales.each do |sales|
+                    @commission += sales.event.commission.to_i * sales.cuantity
+                end
+            end
+            @commission += sale.event.commission.to_i * sale.cuantity
+        end
     end
     
     def show_events
@@ -37,19 +58,19 @@ class ControlController < ApplicationController
     end
     
     def show_sales      
-        @sales = Sale.all
+        @sales = current_sales
         @my_total = [Sale.get_sum(current_user.id, "total"), Sale.get_sum(current_user.id, "cuantity")]
         if current_boss
             @boss_total = [ Sale.get_sum(current_boss.id, "total"), Sale.get_sum(current_boss.id, "cuantity")]
         else
             @boss_total = [0,0]
         end
-        @total_team = 0
-        @total_entradas = 0
-        current_employees.each do |employee|
-            @total_team += Sale.get_sum(employee.id, "total")
-            @total_entradas += Sale.get_sum(employee.id, "cuantity")       
-        end        
+#        @total_team = 0
+#        @total_entradas = 0
+#        current_employees.each do |employee|
+#            @total_team += Sale.get_sum(employee.id, "total")
+#            @total_entradas += Sale.get_sum(employee.id, "cuantity")       
+#        end        
     end
 
     

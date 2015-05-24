@@ -8,11 +8,14 @@ class SauronController < ApplicationController
         @sales = Sale.get_total("cuantity")
         @events = Event.all
         @benefits = Sale.get_total("total")
+        @messages = Message.all
         users = {name: 'Usuarios', data: User.group_by_day(:created_at).count()}
         sales = {name: 'Ventas', data: Sale.group_by_day(:created_at).count()}
         events = {name: 'Eventos', data: Event.group_by_day(:created_at).count()}
+        messages = {name: 'Mensajes', data: Message.group_by_day(:created_at).count()}
 
-        @chart_data = [users, sales, events];
+
+        @chart_data = [users, sales, events, messages];
     end
     
     def show_groups

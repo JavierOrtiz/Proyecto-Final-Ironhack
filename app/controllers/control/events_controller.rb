@@ -26,15 +26,19 @@ class Control::EventsController < ApplicationController
     end
     
     def take
-        event = Event.find params[:id]
-        recurso = Assignation.where(user_id: current_user.id, event_id: event.id)
-        if recurso.size == 1
-            redirect_to control_events_path, :alert => "Error, el evento ya existe"
+        if current_user.events.size >= current_user.plan.max_events
+            redirect_to control_events_path, :alert => "Necesitas ampliar tu plan"
         else
-            user = current_user
-            user.events.push(event)
-            redirect_to control_events_path, :alert => "Asignado correctamente"
-        end        
+            event = Event.find params[:id]
+            recurso = Assignation.where(user_id: current_user.id, event_id: event.id)
+            if recurso.size == 1
+                redirect_to control_events_path, :alert => "Error, el evento ya existe"
+            else
+                user = current_user
+                user.events.push(event)
+                redirect_to control_events_path, :alert => "Asignado correctamente"
+            end  
+        end
     end
     
     def drop

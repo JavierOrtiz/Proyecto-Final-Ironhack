@@ -6,31 +6,36 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Estadisticas rapidas</h3>
             </div>
             <div class="panel-body">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span class="fa-2x"><%= @users.size %></span>
                    <i class="fa fa-user fa-2x"></i>
                     <p>Usuarios</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span class="fa-2x"><%= @sales %></span>
                     <i class="fa fa-arrow-up fa-2x"></i>
                     <p>entradas</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span class="fa-2x"><%= @events.size %></span>
                     <i class="fa fa-ticket fa-2x"></i>
                     <p>Eventos</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <span class="fa-2x"><%= @benefits %></span>
                     <i class="fa fa-eur fa-2x"></i>
                     <p>Ganancias</p>
+                </div>
+                <div class="col-md-2">
+                    <span class="fa-2x"><%= @messages.size %></span>
+                    <i class="fa fa-envelope-o fa-2x"></i>
+                    <p>Mensajes</p>
                 </div>
             </div>
         </div>
