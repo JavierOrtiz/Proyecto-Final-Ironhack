@@ -125,10 +125,12 @@
             </div>
             <div class="panel-body">
                 <div class="list-group">
+                    <% @notices.each do |notice| %>
                     <a href="#" class="list-group-item">
                         <span class="badge">Ver mensajes</span>
-                        <i class="fa fa-fw fa-calendar"></i> Actualizacion Web
+                        <i class="<%= notice.icon %>"></i> <%= notice.title %>
                     </a>
+                    <% end %>
                 </div>
                 <div class="text-right">
                     <a href="#">Ver todos los mensajes <i class="fa fa-arrow-circle-right"></i></a>

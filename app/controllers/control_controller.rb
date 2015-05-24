@@ -4,6 +4,7 @@ class ControlController < ApplicationController
     layout 'admin_user'
     
     def index
+        @notices = Notice.limit(8)
         @employees = current_employees.size
         @events = current_events.size
         if @events.size == 0
