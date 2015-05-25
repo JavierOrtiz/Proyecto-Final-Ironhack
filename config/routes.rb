@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get '/control/employees' => 'control#show_employees'
     get '/control/events' => 'control#show_events'
     get '/control/sales' => 'control#show_sales'
+    get '/control/reports' => 'control#show_reports'
+
     get '/control/messages' => 'control#show_messages', as: :control_messages
     get '/control/messages/:id/read' => 'control/messages#mark_read', as: :control_read_message
 

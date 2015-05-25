@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Administracion - Zonabeta</title>
+        <title>Administracion - GetTeam</title>
         
 
         <!-- Bootstrap Core CSS -->
@@ -17,6 +17,7 @@
 
         <!-- Custom CSS -->
         <link href="/assets/css/sb-admin.css" rel="stylesheet">
+        <%= javascript_include_tag "/assets/js/jsapi.js", "chartkick" %>
 
         <!-- Custom Fonts -->
         <link href="/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +42,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Zonabeta</a>
+                    <a class="navbar-brand" href="#">GetTeam</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,7 +64,7 @@
                             <a href="<%= control_messages_path %>"><i class="fa fa-fw fa-envelope-o"></i> Mensajes</a>
                         </li>
                         <li>
-                            <a href="<%= control_events_path %>"><i class="fa fa-fw fa-newspaper-o"></i> Informes</a>
+                            <a href="<%= control_reports_path %>"><i class="fa fa-fw fa-newspaper-o"></i> Informes</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

@@ -8,17 +8,23 @@ class User < ActiveRecord::Base
     after_initialize :set_default_data, :if => :new_record?
     
     # Aqui creamos las relacciones y el inverso de ellas.
-    has_many :employees, :foreign_key => 'user_id', :class_name => "User"
     has_many :assignations
     has_many :sales
     has_many :messages
     has_many :notices    
     belongs_to :plan
     has_many :events, :through => :assignations
+    
+    has_many :employees, :foreign_key => 'user_id', :class_name => "User"
     belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
     
     def self.get_active
-        return self.where(user_id: nil, status: 'activo') 
+        # return self.where(user_id: nil, status: 'activo') 
+         return self.all
+    end
+    
+    def self.get_blocked
+        return self.where(user_id: nil, status: 'bloqueado')
     end
     
     def self.message_group!(sender, group_id, params)

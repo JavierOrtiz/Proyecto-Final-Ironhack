@@ -37,6 +37,15 @@ class ControlController < ApplicationController
         @received_messages = Message.get_message_user(current_user.id)       
     end
     
+    def show_reports
+        @sales = Sale.get_total("cuantity")
+        @events = Event.where user_id: current_user.id
+        @benefits = Sale.get_total("total")
+        sales = {name: 'Ventas', data: Sale.group_by_day(:created_at).count()}
+        events = {name: 'Eventos', data: Event.group_by_day(:created_at).count()}
+        @chart_data = [sales, events];
+    end
+    
     def show_employees        
         @employees = current_employees
         @boss = current_boss
