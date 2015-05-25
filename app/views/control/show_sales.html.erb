@@ -7,6 +7,7 @@
         </div>
         <div class="panel-body">
             <div class="table-responsive">
+               <h1>Mis ventas</h1>
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
@@ -37,6 +38,38 @@
                         <% end %>
                     </tbody>
                 </table>
+                <hr>
+                <h1>Ventas de equipo</h1>
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Creada</th>
+                            <th>Procesada</th>
+                            <th>Estado</th>
+                            <th>Cantidad</th>
+                            <th>Evento</th>
+                            <th>Vendedor</th>
+                            <th>Comprador</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @team_sales.each do |sale| %>
+                        <tr>
+                            <td><%= sale.id %></td>
+                            <td><%= sale.sold %></td>
+                            <td><%= sale.processed %></td>
+                            <td><%= sale.status %></td>
+                            <td><%= sale.cuantity %></td>
+                            <td><%= sale.event.title %></td>    
+                            <td><%= sale.user.name %></td>    
+                            <td><%= sale.buyer %></td>
+                            <td><%= sale.total %> <i class="fa fa-eur"></i></td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
             </div>
             <div class="text-right">
                 <a href="#">Ver todas <i class="fa fa-arrow-circle-right"></i></a>
@@ -45,6 +78,11 @@
     </div>
 </div>
 <div class="col-md-4">
+   <a href="#" class="btn btn-warning btn-block">Revisar ventas reservadas</a>
     <h1><%= @my_total[1]  %> <small>entradas vendidas</small></h1>
     <h1><%= @my_total[0] %> <small>€ obtenidos</small></h1>
+    <hr>
+    <h1><%= @my_total[1] +@total_entradas  %> <small>entradas vendidas equipo</small></h1>
+    <h1><%= @my_total[0] + @total_team %> <small>€ obtenidos equipo</small></h1>
+    <hr>
 </div>

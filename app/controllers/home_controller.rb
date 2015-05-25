@@ -15,7 +15,6 @@ class HomeController < ApplicationController
         @user = User.new user_params
         @boss = User.find_by_invitationHash session[:invitationHash]
         @user.user_id = @boss.id
-        binding.pry
         if @user.save
             redirect_to root_path
         else

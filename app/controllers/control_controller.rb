@@ -23,8 +23,18 @@ class ControlController < ApplicationController
     end
     
     def show_messages
+        @contacts  = []
+        current_employees.each do |employee|
+            @contacts << employee
+        end
+        if current_boss != nil
+            @contacts << current_boss
+        end
+        
+        @array_contact = @contacts.map { |contact| [contact.name, contact.id] }
+        @message = Message.new
         @send_messages = current_messages.order("created_at DESC")
-        @received_messages = Message.where(to: current_user.id).order("created_at DESC")        
+        @received_messages = Message.get_message_user(current_user.id)       
     end
     
     def show_employees        
@@ -41,10 +51,10 @@ class ControlController < ApplicationController
             current_employees.each do |employee|
                 @sales += Sale.get_sum(employee.id, "cuantity")
                 employee.sales.each do |sales|
-                    @commission += sales.event.commission.to_i * sales.cuantity
+                    @commission += sales.event.commission.to_f * sales.cuantity
                 end
             end
-            @commission += sale.event.commission.to_i * sale.cuantity
+            @commission += sale.event.commission.to_f * sale.cuantity
         end
     end
     
@@ -59,19 +69,24 @@ class ControlController < ApplicationController
     end
     
     def show_sales      
-        @sales = current_sales
+        @sales, @team_sales = current_sales, []
+        current_employees.each do |employee|
+            employee.sales.each do |sale|
+                @team_sales << sale
+            end
+        end
         @my_total = [Sale.get_sum(current_user.id, "total"), Sale.get_sum(current_user.id, "cuantity")]
         if current_boss
             @boss_total = [ Sale.get_sum(current_boss.id, "total"), Sale.get_sum(current_boss.id, "cuantity")]
         else
             @boss_total = [0,0]
         end
-#        @total_team = 0
-#        @total_entradas = 0
-#        current_employees.each do |employee|
-#            @total_team += Sale.get_sum(employee.id, "total")
-#            @total_entradas += Sale.get_sum(employee.id, "cuantity")       
-#        end        
+        @total_team = 0
+        @total_entradas = 0
+        current_employees.each do |employee|
+            @total_team += Sale.get_sum(employee.id, "total")
+            @total_entradas += Sale.get_sum(employee.id, "cuantity")       
+        end        
     end
 
     

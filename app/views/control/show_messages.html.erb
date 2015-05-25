@@ -3,7 +3,7 @@
 <div class="container">
     <div class="content-container clearfix">
         <div class="col-md-12">
-            <h1 class="content-title">Bandeja de entrada <small class="pull-right"><a href="#" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Nuevo correo</a><a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#sended"><i class="fa fa-paper-plane"></i> Enviados</a><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> Actualizar</a></small></h1>
+            <h1 class="content-title">Bandeja de entrada <small class="pull-right"><a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#new_message"><i class="fa fa-edit"></i> Nuevo correo</a><a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#sended"><i class="fa fa-paper-plane"></i> Enviados</a><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> Actualizar</a></small></h1>
             <ul class="mail-list">
                 <% @received_messages.each do |message| %>                
                     <li>
@@ -52,6 +52,43 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="new_message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Redactar mensaje</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for [:control, @message] do |f| %>
+                   <div class="row">
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <%= f.label :Asunto %>
+                                <%= f.text_field :title, class: 'form-control' %>
+                            </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div class="group">
+                               <%= f.label :Destinatario %>
+                               <%= select_tag(:to, options_for_select(@array_contact), class: 'form-control') %>
+                           </div>
+                       </div>               
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :Mensaje %>
+                        <%= f.text_area :content, class: 'form-control', :include_blank => true %>
+                    </div>
+                
+                <%= f.button :Enviar, class: 'btn btn-success' %>
+                <% end %>
+                
+        </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>

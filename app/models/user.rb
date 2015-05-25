@@ -17,6 +17,22 @@ class User < ActiveRecord::Base
     has_many :events, :through => :assignations
     belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
     
+    def self.get_active
+        return self.where(user_id: nil, status: 'activo') 
+    end
+    
+    def self.message_group!(sender, group_id, params)
+        boss = self.find(group_id)
+        boss.employees.each do |employee|
+            Message.create_for_user!(sender, employee, params)
+        end
+        Message.create_for_user!(sender, boss, params)
+    end
+    
+    def active?
+        self.status == 'activo'
+    end
+    
     private
     def set_default_data
         unless self.role
