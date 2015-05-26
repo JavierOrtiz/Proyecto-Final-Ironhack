@@ -20,11 +20,16 @@
                             <th>Vendedor</th>
                             <th>Comprador</th>
                             <th>Total</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @sales.each do |sale| %>
-                            <tr>
+                        <% if sale.status == "Pagado" %>
+                        <tr class="success">
+                            <% else %>
+                        <tr class="warning">
+                            <% end %>
                                 <td><%= sale.id %></td>
                                 <td><%= sale.sold %></td>
                                 <td><%= sale.processed %></td>
@@ -34,6 +39,12 @@
                                 <td><%= sale.user.name %></td>    
                                 <td><%= sale.buyer %></td>
                                 <td><%= sale.total %> <i class="fa fa-eur"></i></td>
+                                <% if sale.status != "Pagado" %>
+                                    <td><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> Procesar</a></td>
+                                <% else %>
+                                    <td><a href="#" class="btn btn-default btn-xs">Procesado</a></td>
+                                <% end %>
+
                             </tr>
                         <% end %>
                     </tbody>
@@ -56,7 +67,11 @@
                     </thead>
                     <tbody>
                         <% @team_sales.each do |sale| %>
-                        <tr>
+                        <% if sale.status == "Pagado" %>
+                        <tr class="success">
+                            <% else %>
+                        <tr class="warning">
+                            <% end %>
                             <td><%= sale.id %></td>
                             <td><%= sale.sold %></td>
                             <td><%= sale.processed %></td>
@@ -78,7 +93,8 @@
     </div>
 </div>
 <div class="col-md-4">
-   <a href="#" class="btn btn-warning btn-block">Revisar ventas reservadas</a>
+    <a href="<%= new_control_sale_path %>" class="btn btn-success btn-block"><i class="fa fa-credit-card"></i> Nueva venta</a>
+    <a href="#" class="btn btn-warning btn-block"><i class="fa fa-eye"></i> Revisar ventas reservadas</a>
     <h1><%= @my_total[1]  %> <small>entradas vendidas</small></h1>
     <h1><%= @my_total[0] %> <small>€ obtenidos</small></h1>
     <hr>

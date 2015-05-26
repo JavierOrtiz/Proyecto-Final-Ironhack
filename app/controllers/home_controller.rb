@@ -4,11 +4,15 @@ class HomeController < ApplicationController
     end
     
     def invite
-        if !current_user
-            @user = User.new        
-            session[:invitationHash] = params[:q]
+        if params[:q] == nil
+            redirect_to root_path
         else
-            redirect_to control_index_path, alert: 'Ya estas registrado.'
+            if !current_user
+                @user = User.new        
+                session[:invitationHash] = params[:q]
+            else
+                redirect_to control_index_path, alert: 'Ya estas registrado.'
+            end
         end
     end
     def create

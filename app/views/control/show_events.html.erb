@@ -6,7 +6,7 @@
 </div>
 <% end %>
 
-<% if !current_user.boss %><span class=""><a href="<%= new_control_event_path %>" class="btn btn-success">CREAR EVENTO</a></span><% end %>
+
  <hr>
  
 <div role="tabpanel">
@@ -17,6 +17,7 @@
         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Disponibles</a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Antiguos</a></li>
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Ajustes</a></li>
+        <li><% if !current_user.boss %><span class=""><a href="<%= new_control_event_path %>" class="btn btn-success">CREAR EVENTO</a></span><% end %></li>
     </ul>
 
     <!-- Tab panes -->

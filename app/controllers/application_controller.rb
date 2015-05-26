@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
         @currentPlan ||= current_user.plan
     end
 
+
     protected
     # Le decimos a devise que cuando entren a perfil carguen el diseño en el layout admin
     def layout_by_resource
@@ -48,7 +49,9 @@ class ApplicationController < ActionController::Base
     
     def active_user!
         return if self.class.to_s == 'HomeController' || self.class.to_s == 'Devise::SessionsController'
-        render(file: 'public/401.html', layout: 'application', status: :unauthorized) unless current_user and current_user.active?
+        redirect_to root_path unless current_user and current_user.active?
+        # render(file: 'public/401.html', layout: 'application', status: :unauthorized) unless current_user and current_user.active?
+
 
     end
 

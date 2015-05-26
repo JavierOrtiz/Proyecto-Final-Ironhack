@@ -14,6 +14,8 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/css/animate.css" rel="stylesheet">
+
 
         <!-- Custom CSS -->
         <link href="/assets/css/sb-admin.css" rel="stylesheet">
@@ -61,9 +63,6 @@
                             <a href="<%= control_sales_path %>"><i class="fa fa-fw fa-money"></i> Ventas</a>
                         </li>
                         <li>
-                            <a href="<%= control_messages_path %>"><i class="fa fa-fw fa-envelope-o"></i> Mensajes</a>
-                        </li>
-                        <li>
                             <a href="<%= control_reports_path %>"><i class="fa fa-fw fa-newspaper-o"></i> Informes</a>
                         </li>
                     </ul>
@@ -75,7 +74,10 @@
                                 <li><a href="#">Eventos: <%= current_user.events.size %>/<%= current_user.plan.max_events %> </a></li>
                             </ul>
                         </li>
-                        <% end %>   
+                        <% end %>  
+                        <li>
+                            <a href="<%= control_messages_path %>"><span class="label label-danger"><i class="fa fa-envelope-o"></i> <%= Message.get_unread_messages(current_user.id).size %> Mensajes </span> </a>
+                        </li> 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-at"></i><% if current_user %> <%= current_user.name %> <% end %> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -92,11 +94,7 @@
             <!-- Navigation -->
            
             <div id="page-wrapper">
-                <ol class="breadcrumb">
-                    <li class="active">
-                        <i class="fa fa-dashboard"></i> Escritorio
-                    </li>
-                </ol>
+         
                 <div class="container-fluid">                 
                     <% if notice || alert %>
                     <div class="row">
