@@ -16,6 +16,7 @@ gem 'groupdate'
 gem 'whenever'
 gem "chartkick"
 gem 'simple_form'
+gem 'twitter'
 # gem 'elasticsearch-model'
 # gem 'elasticsearch-rails'
 # Use CoffeeScript for .coffee assets and views

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     layout :layout_by_resource
     before_filter :configure_permitted_parameters, if: :devise_controller?
 
-
+    # Declaramos variables globales para recurrir a datos usados habitualmente
     def current_boss
         @currentBoss ||= current_user.boss
     end
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
 
     protected
-
+    # Le decimos a devise que cuando entren a perfil carguen el diseño en el layout admin
     def layout_by_resource
         if devise_controller? && resource_name == :user && action_name == "edit"
             "admin_user"

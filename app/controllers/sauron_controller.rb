@@ -23,6 +23,10 @@ class SauronController < ApplicationController
         @groups_blocks = User.get_blocked()
     end
     
+    def site_settings
+        
+    end
+    
     private
     def admin_only         
         if current_user.role != 'admin'

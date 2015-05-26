@@ -2,6 +2,7 @@ class Control::MessagesController < ApplicationController
     before_action :authenticate_user!
 
     def mark_read
+        # Buscamos el mensaje con la id enviada en parametros y cambiamos el "status" a "read"
         message = Message.find params[:id] 
         message.status = "read"
         message.save
@@ -13,6 +14,7 @@ class Control::MessagesController < ApplicationController
     end
     
     def create
+        # Recibmos parametros filtrados y asignamos 2 parametros mas que no acepta el formulario.
         @message = Message.new message_params
         @message.user_id = current_user.id
         @message.to = params[:to].to_i

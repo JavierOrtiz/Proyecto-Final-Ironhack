@@ -2,6 +2,7 @@ class Sauron::MessagesController < ApplicationController
     before_action :authenticate_user!
 
     def create
+        # Codigo refactorizado, enviando usuario actual, id del receptor y parametros del mensaje
         User.message_group!(current_user, params[:id], message_params)
 #        @message = Message.new message_params
 #        @message.user_id = current_user.id
