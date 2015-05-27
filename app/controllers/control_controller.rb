@@ -45,6 +45,10 @@ class ControlController < ApplicationController
         sales = {name: 'Ventas', data: Sale.group_by_day(:created_at).count()}
         events = {name: 'Eventos', data: Event.group_by_day(:created_at).count()}
         @chart_data = [sales, events];
+        @user_data = []
+        current_employees.each do |employee|
+            @user_data << {name: employee.name, data: Sale.where(user_id: employee.id).group_by_day(:sold).count()}
+        end        
     end
     
     def show_employees        

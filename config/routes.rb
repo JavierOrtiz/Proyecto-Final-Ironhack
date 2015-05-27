@@ -1,43 +1,47 @@
 Rails.application.routes.draw do
     
-    devise_for :users
     root 'home#index'
     
-    get '/invite' =>  'home#invite'
-    post '/invite' => 'home#create', as: :invitation_user
-    
-    get '/control/employees' => 'control#show_employees'
-    get '/control/events' => 'control#show_events'
-    get '/control/sales' => 'control#show_sales'
-    get '/control/reports' => 'control#show_reports'
+    scope "(:locale)", locale: /es|en/ do      
 
-    get '/control/messages' => 'control#show_messages', as: :control_messages
-    get '/control/messages/:id/read' => 'control/messages#mark_read', as: :control_read_message
+        devise_for :users
+
+        get '/invite' =>  'home#invite'
+        post '/invite' => 'home#create', as: :invitation_user
+
+        get '/control/employees' => 'control#show_employees'
+        get '/control/events' => 'control#show_events'
+        get '/control/sales' => 'control#show_sales'
+        get '/control/reports' => 'control#show_reports'
+
+        get '/control/messages' => 'control#show_messages', as: :control_messages
+        get '/control/messages/:id/read' => 'control/messages#mark_read', as: :control_read_message
 
 
-    
-    get '/sauron/groups' => 'sauron#show_groups'
-    get '/sauron/groups/:id/block' => 'sauron/groups#change_status', as: :sauron_group_block
-    
-    get '/invitacion' => 'devise/registrations#new'
-    
-    get '/control/events/take/:id' => 'control/events#take', as: :control_event_take
-    get '/control/events/drop/:id' => 'control/events#drop', as: :control_event_drop
-    
-    namespace :sauron do
-        resources :groups
+
+        get '/sauron/groups' => 'sauron#show_groups'
+        get '/sauron/groups/:id/block' => 'sauron/groups#change_status', as: :sauron_group_block
+
+        get '/invitacion' => 'devise/registrations#new'
+
+        get '/control/events/take/:id' => 'control/events#take', as: :control_event_take
+        get '/control/events/drop/:id' => 'control/events#drop', as: :control_event_drop
+
+        namespace :sauron do
+            resources :groups
+        end
+        resources :sauron, only:[:index]
+
+        namespace :control do
+            resources :messages
+            resources :users, only:[:create,:update,:destroy,:show, :new, :edit]
+            resources :events, only:[:create,:update,:destroy,:show, :new]
+            resources :sales, only:[:create,:update,:destroy,:show, :new]
+        end
+        resources :control, only:[:index]
+
+        resources :home, only:[:index]
     end
-    resources :sauron, only:[:index]
-    
-    namespace :control do
-        resources :messages
-        resources :users, only:[:create,:update,:destroy,:show, :new, :edit]
-        resources :events, only:[:create,:update,:destroy,:show, :new]
-        resources :sales, only:[:create,:update,:destroy,:show, :new]
-    end
-    resources :control, only:[:index]
-
-    resources :home, only:[:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

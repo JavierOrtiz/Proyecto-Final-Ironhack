@@ -3,7 +3,7 @@
 <div class="container">
     <div class="content-container clearfix">
         <div class="col-md-12">
-            <h1 class="content-title">Bandeja de entrada <small class="pull-right"><a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#new_message"><i class="fa fa-edit"></i> Nuevo correo</a><a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#sended"><i class="fa fa-paper-plane"></i> Enviados</a><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> Actualizar</a></small></h1>
+            <h1 class="content-title"><%= t('Bandeja_entrada') %> <small class="pull-right"><a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#new_message"><i class="fa fa-edit"></i> <%= t('Nuevo_correo') %></a><a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#sended"><i class="fa fa-paper-plane"></i> <%= t('Mensajes_enviados') %></a><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> <%= t('Actualizar') %></a></small></h1>
             <ul class="mail-list">
                 <% @received_messages.each do |message| %>                
                     <li>
@@ -12,9 +12,9 @@
                                 <%= message.owner.name %> 
                                 <div class="col-md-1">
                                     <% if message.status != 'read' %>
-                                        <span class="label label-success">No leido</span>
+                                    <span class="label label-success"><%= t('No_leido') %></span>
                                     <% else %>
-                                        <span class="label label-default">Leido</span>
+                                    <span class="label label-default"><%= t('Leido') %></span>
                                     <% end %>
                                 </div>
                             </span>
@@ -32,7 +32,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Mensajes enviados</h4>
+                <h4 class="modal-title" id="myModalLabel"><%= t('Mensajes_enviados') %></h4>
             </div>
             <div class="modal-body">
                 <% @send_messages.each do |message| %>                         
@@ -40,9 +40,9 @@
                             <div class="col-md-1">
                                 <p>
                                 <% if message.status != 'read' %>
-                                <span class="label label-success">No leido</span>
+                                    <span class="label label-success"><%= t('No_leido') %></span>
                                 <% else %>
-                                <span class="label label-default">Leido</span>
+                                    <span class="label label-default"><%= t('Leido') %></span>
                                 <% end %>
                             </div>
                 <a href="<%= control_message_path(message.id) %>"><span class="mail-subject"><%= message.title %></span>
@@ -51,7 +51,7 @@
                 <% end %>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('Cerrar') %></button>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Redactar mensaje</h4>
+                <h4 class="modal-title" id="myModalLabel"><%= t('Redactar') %></h4>
             </div>
             <div class="modal-body">
                 <%= form_for [:control, @message] do |f| %>

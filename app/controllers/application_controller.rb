@@ -3,9 +3,19 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+    before_filter :set_locale
+
     layout :layout_by_resource
     before_filter :configure_permitted_parameters, if: :devise_controller?
 
+    
+    def set_locale
+        I18n.locale = params[:locale] || I18n.default_locale
+    end
+
+    def default_url_options(options={})
+        { locale: I18n.locale }
+    end
     # Declaramos variables globales para recurrir a datos usados habitualmente
     def current_boss
         @currentBoss ||= current_user.boss
@@ -46,7 +56,7 @@ class ApplicationController < ActionController::Base
     end
     
     private
-    
+
     def active_user!
         return if self.class.to_s == 'HomeController' || self.class.to_s == 'Devise::SessionsController'
         redirect_to root_path unless current_user and current_user.active?

@@ -3,24 +3,24 @@
 <div class="col-md-8">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Panel de transaciones</h3>
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> <%= t('Panel_Ventas') %></h3>
         </div>
         <div class="panel-body">
             <div class="table-responsive">
-               <h1>Mis ventas</h1>
+                <h1><%= t('Mis_ventas') %></h1>
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Creada</th>
-                            <th>Procesada</th>
-                            <th>Estado</th>
-                            <th>Cantidad</th>
-                            <th>Evento</th>
-                            <th>Vendedor</th>
-                            <th>Comprador</th>
-                            <th>Total</th>
-                            <th>Acciones</th>
+                            <th><%= t('Creada') %></th>
+                            <th><%= t('Procesado') %></th>
+                            <th><%= t('Estado') %></th>
+                            <th><%= t('Cantidad') %></th>
+                            <th><%= t('Evento') %></th>
+                            <th><%= t('Vendedor') %></th>
+                            <th><%= t('Comprador') %></th>
+                            <th><%= t('Total') %></th>
+                            <th><%= t('Acciones') %></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,9 +40,9 @@
                                 <td><%= sale.buyer %></td>
                                 <td><%= sale.total %> <i class="fa fa-eur"></i></td>
                                 <% if sale.status != "Pagado" %>
-                                    <td><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> Procesar</a></td>
+                            <td><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> <%= t('Procesar') %></a></td>
                                 <% else %>
-                                    <td><a href="#" class="btn btn-default btn-xs">Procesado</a></td>
+                            <td><a href="#" class="btn btn-default btn-xs"><%= t('Procesado') %></a></td>
                                 <% end %>
 
                             </tr>
@@ -50,19 +50,19 @@
                     </tbody>
                 </table>
                 <hr>
-                <h1>Ventas de equipo</h1>
+                <h1><%= t('Ventas_equipo') %></h1>
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Creada</th>
-                            <th>Procesada</th>
-                            <th>Estado</th>
-                            <th>Cantidad</th>
-                            <th>Evento</th>
-                            <th>Vendedor</th>
-                            <th>Comprador</th>
-                            <th>Total</th>
+                            <th><%= t('Creada') %></th>
+                            <th><%= t('Procesado') %></th>
+                            <th><%= t('Estado') %></th>
+                            <th><%= t('Cantidad') %></th>
+                            <th><%= t('Evento') %></th>
+                            <th><%= t('Vendedor') %></th>
+                            <th><%= t('Comprador') %></th>
+                            <th><%= t('Total') %></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,18 +87,18 @@
                 </table>
             </div>
             <div class="text-right">
-                <a href="#">Ver todas <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#"><%= t('Ver_todas') %> <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
 </div>
 <div class="col-md-4">
-    <a href="<%= new_control_sale_path %>" class="btn btn-success btn-block"><i class="fa fa-credit-card"></i> Nueva venta</a>
-    <a href="#" class="btn btn-warning btn-block"><i class="fa fa-eye"></i> Revisar ventas reservadas</a>
-    <h1><%= @my_total[1]  %> <small>entradas vendidas</small></h1>
-    <h1><%= @my_total[0] %> <small>€ obtenidos</small></h1>
+    <a href="<%= new_control_sale_path %>" class="btn btn-success btn-block"><i class="fa fa-credit-card"></i> <%= t('Nueva_Venta') %></a>
+    <a href="#" class="btn btn-warning btn-block"><i class="fa fa-eye"></i> <%= t('Revisar_ventas') %></a>
+    <h1><%= @my_total[1]  %> <small><%= t('Entradas_vendidas') %></small></h1>
+    <h1><%= @my_total[0] %> <small><%= t('Moneda') %> <%= t('Obtenidos') %></small></h1>
     <hr>
-    <h1><%= @my_total[1] +@total_entradas  %> <small>entradas vendidas equipo</small></h1>
-    <h1><%= @my_total[0] + @total_team %> <small>€ obtenidos equipo</small></h1>
+    <h1><%= @my_total[1] +@total_entradas  %> <small><%= t('Vendidas_equipo') %></small></h1>
+    <h1><%= @my_total[0] + @total_team %> <small><%= t('Moneda') %> <%= t('Obtenidos_equipo') %></small></h1>
     <hr>
 </div>

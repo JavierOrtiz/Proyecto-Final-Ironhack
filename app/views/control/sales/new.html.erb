@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h1>Nueva venta <small>Para: <%= current_user.name %></small></h1>
+    <h1><%= t('Nueva_Venta') %> <small><%= t('Para') %>: <%= current_user.name %></small></h1>
     <div class="col-md-12">
         <%= form_for [:control, @sale] do |f| %>
         <div class="row">

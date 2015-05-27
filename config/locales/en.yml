@@ -21,3 +21,70 @@
 
 en:
   hello: "Hello world"
+  
+  # Palabras clave
+  Escritorio: 'Dashboard'
+  Empleados: 'Employees'
+  Eventos: 'Events'
+  Ventas: 'Sales'
+  Noticias: 'News'
+  Actividad: 'Activity'
+  Beneficios: 'Benefits'
+  Mensajes: 'Messages'
+  Informes: 'Reports'
+  Moneda: '€'
+  
+
+  # Contenido de relleno
+  Limite_plan: 'Plan limit reached'
+  Estadisticas_rapidas: 'Quick Stats'
+  Ver_detalles: 'See details'
+  Panel_Ventas: 'Sales Panel'
+  Ver_todas: 'See all'
+  Lista: 'List'
+  Activos: 'Active'
+  Disponibles: 'Availables'
+  Antiguos: 'Olds'
+  Ajustes: 'Settings'
+  Redactar: 'Write message'
+  Mensajes_enviados: 'Sended Messages'
+  Leido: 'Read'
+  No_leido: 'Unread'
+  Bandeja_entrada: 'Inbox'
+  Nuevo_correo: 'New message'
+  Actualizar: 'Refresh'
+  URL_Invitacion: 'Invitation URL'
+  o_pulsa_cualquier_tecla: 'or press any key'
+  Mis_ventas: 'My sales'
+  Ventas_equipo: 'Team sales'
+  
+  # Tablas ventas
+  Creada: 'Created'
+  Procesado: 'Processed'
+  Estado: 'Status'
+  Cantidad: 'Cuantity'
+  Evento: 'Event'
+  Vendedor: 'Seller'
+  Comprador: 'Buyer'
+  Total: 'Total'
+  Acciones: 'Actions'
+  Obtenidos: 'Obtained'
+  Entradas_vendidas: 'Tickets sells'
+  Vendidas_equipo: 'Ticket team sales'
+  Obtenidos_equipo: 'Team obtained'
+  Para: 'For'
+
+  
+  # Botones
+  Añadir_empleado: 'Add employee'
+  Ampliar_plan: 'Upgrade plan'
+  Solicitar: 'Take Event'
+  Soltar: 'Drop'
+  Editar: 'Edit'
+  Procesar: 'Process'
+  Procesador: 'Processed'
+  Nueva_Venta: 'New sale'
+  Revisar_ventas: 'Review reserved sales'
+
+
+

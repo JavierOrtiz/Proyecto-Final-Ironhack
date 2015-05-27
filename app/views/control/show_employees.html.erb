@@ -14,12 +14,12 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Empleados 
-            <small>Lista</small>
+            <%= t('Empleados') %> 
+            <small><%= t('Lista') %></small>
             <% if current_user.employees.size <= current_user.plan.max_users  %>
-            <a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> Añadir empleado </a>
+            <a href="#" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i> <%= t('Añadir_empleado') %> </a>
             <% else %>
-            <a href="#" class="btn btn-warning pull-right" data-toggle="modal" data-target="#ampliar"><i class="fa fa-user"></i> Ampliar plan </a>
+            <a href="#" class="btn btn-warning pull-right" data-toggle="modal" data-target="#ampliar"><i class="fa fa-user"></i> <%= t('Ampliar_plan') %> </a>
             <% end %>
         </h1>
     </div>
@@ -36,13 +36,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><%= @employees.size %></div>
-                        <div>Empleados</div>
+                        <div><%= t('Empleados') %></div>
                     </div>
                 </div>
             </div>
             <a href="<%= control_employees_path %>">
                 <div class="panel-footer">
-                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-left"><%= t('Ver_detalles') %></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -58,13 +58,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><%= @events %></div>
-                        <div>Eventos</div>
+                        <div><%= t('Eventos') %></div>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-left"><%= t('Ver_detalles') %></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -80,13 +80,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><%= @sales %></div>
-                        <div>Ventas</div>
+                        <div><%= t('Sales') %></div>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-left"><%= t('Ver_detalles') %></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -102,13 +102,13 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge"><%= @commission %></div>
-                        <div>Beneficios</div>
+                        <div><%= t('Beneficios') %></div>
                     </div>
                 </div>
             </div>
             <a href="#">
                 <div class="panel-footer">
-                    <span class="pull-left">Ver detalles</span>
+                    <span class="pull-left"><%= t('See_details') %></span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                     <div class="clearfix"></div>
                 </div>
@@ -127,7 +127,7 @@
                 <div class="content">
                     <p><%= @boss.name %> <span class="label label-primary"><i class="fa fa-star"></i> Jefazo</span> <br>
                         <%= @boss.email %></p>
-                    <p><button type="button" class="btn btn-default">Contacto</button></p>
+                    <p><button type="button" class="btn btn-default"><%= t('Contacto') %></button></p>
                 </div>
             </div>
         </div>
@@ -142,7 +142,7 @@
                 <div class="content">
                     <p><%= employee.name %> <br>
                         <%= employee.email %></p>
-                    <p><a type="button" class="btn btn-default" href="<%= control_user_path(employee.id) %>">Ver info</a></p>
+                    <p><a type="button" class="btn btn-default" href="<%= control_user_path(employee.id) %>"><%= t('Ver_Info') %></a></p>
                 </div>
             </div>
         </div>
@@ -153,9 +153,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text-center">
-                    <h1>URL de invitacion</h1>
+                    <h1><%= t('URL_Invitacion') %></h1>
                     <p class="well">http://localhost:3000/invite?q=<%= current_user.invitationHash %></p>
-                    <h4><kbd>esc</kbd> o pulsa cualquier lugar</h4>
+                    <h4><kbd>esc</kbd> <%= t('o_pulsa_cualquier_tecla') %></h4>
                     <hr>
                 </div>
             </div>

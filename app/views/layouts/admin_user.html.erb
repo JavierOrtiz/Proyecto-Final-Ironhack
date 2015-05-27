@@ -51,32 +51,32 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="<%= control_index_path %>"><i class="fa fa-fw fa-dashboard"></i> Escritorio</a>
+                            <a href="<%= control_index_path %>"><i class="fa fa-fw fa-dashboard"></i> <%= t('Escritorio') %></a>
                         </li>
                         <li>
-                            <a href="<%= control_employees_path %>"><i class="fa fa-fw fa-users"></i> Empleados</a>
+                            <a href="<%= control_employees_path %>"><i class="fa fa-fw fa-users"></i> <%= t('Employees') %></a>
                         </li>
                         <li>
-                            <a href="<%= control_events_path %>"><i class="fa fa-fw fa-star"></i> Eventos</a>
+                            <a href="<%= control_events_path %>"><i class="fa fa-fw fa-star"></i> <%= t('Eventos') %></a>
                         </li>
                         <li>
-                            <a href="<%= control_sales_path %>"><i class="fa fa-fw fa-money"></i> Ventas</a>
+                            <a href="<%= control_sales_path %>"><i class="fa fa-fw fa-money"></i> <%= t('Ventas') %></a>
                         </li>
                         <li>
-                            <a href="<%= control_reports_path %>"><i class="fa fa-fw fa-newspaper-o"></i> Informes</a>
+                            <a href="<%= control_reports_path %>"><i class="fa fa-fw fa-newspaper-o"></i> <%= t('Informes') %></a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <% if current_user.employees.size >= current_user.plan.max_users || current_user.events.size >= current_user.plan.max_events  %>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="text-danger"><i class="fa fa-exclamation-triangle warning"></i> Limite de plan alcanzado</span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="text-danger"><i class="fa fa-exclamation-triangle warning"></i> <%= t('Limite_plan') %></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Eventos: <%= current_user.events.size %>/<%= current_user.plan.max_events %> </a></li>
+                                <li><a href="#"><%= t('Eventos') %>: <%= current_user.events.size %>/<%= current_user.plan.max_events %> </a></li>
                             </ul>
                         </li>
                         <% end %>  
                         <li>
-                            <a href="<%= control_messages_path %>"><span class="label label-danger"><i class="fa fa-envelope-o"></i> <%= Message.get_unread_messages(current_user.id).size %> Mensajes </span> </a>
+                            <a href="<%= control_messages_path %>"><span class="label label-danger"><i class="fa fa-envelope-o"></i> <%= Message.get_unread_messages(current_user.id).size %> <%= t('Mensajes') %> </span> </a>
                         </li> 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-at"></i><% if current_user %> <%= current_user.name %> <% end %> <span class="caret"></span></a>
