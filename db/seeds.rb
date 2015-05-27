@@ -21,9 +21,9 @@ Event.create title: 'Megatron', description:'¿Pijo yo?', capacity:500, user_id:
 Event.create title: 'ChikiParty', description:'¿Te apuntas?', capacity:310, user_id:2, commission: '2,50', locate:'Atocha, Madrid', date: '2/06/2016', house:'Shoko', price: 15
 Event.create title: 'PaintGlow', description:'Moderneo y postureo', capacity:230, user_id:2, commission: '2,12', locate:'Atocha, Madrid', date: '30/05/2016', house:'Zoologico', price: 15
 
-Sale.create event_id: 1, user_id: 2, cuantity: 10, total: 150, sold: '20/05/2015', processed: '25/05/2015' status: 'Pagado', buyer: 'Jose ramon', phone: 658987565, email: 'jose@comprador.es'
-Sale.create event_id: 2, user_id: 2, cuantity: 10, total: 150, sold: '20/05/2015', processed: '25/05/2015' status: 'Reservado', buyer: 'Princesita', phone: 515448454, email: 'princesita@comprador.es'
-Sale.create event_id: 3, user_id: 4, cuantity: 10, total: 150, sold: '20/05/2015', processed: '25/05/2015' status: 'Pagado', buyer: 'Miriam lopez', phone: 54218756, email: 'miriam@comprador.es'
+Sale.create event_id: 1, user_id: 2, cuantity: 10, total: 150, sold: '20/05/2015', processed: '25/05/2015', status: 'Pagado', buyer: 'Jose ramon', phone: 658987565, email: 'jose@comprador.es'
+Sale.create event_id: 2, user_id: 2, cuantity: 10, total: 150, sold: '20/05/2015', processed: '25/05/2015', status: 'Reservado', buyer: 'Princesita', phone: 515448454, email: 'princesita@comprador.es'
+Sale.create event_id: 3, user_id: 4, cuantity: 10, total: 150, sold: '20/05/2015', processed: '25/05/2015', status: 'Pagado', buyer: 'Miriam lopez', phone: 54218756, email: 'miriam@comprador.es'
 
 Notice.create title: 'Apertura de plataforma', content: 'Por fin llego la hora de abrir la nueva web', status: 'alert', icon: 'fa fa-star', user_id: 1
 Notice.create title: 'Registro activo', content: 'Por fin llego la hora de abrir la nueva web', status: 'alert', icon: 'fa fa-user', user_id: 1

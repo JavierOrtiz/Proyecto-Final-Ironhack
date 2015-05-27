@@ -22,6 +22,10 @@
 en:
   hello: "Hello world"
   
+  # Home
+  Home_titulo: 'Staff manager'
+  Home_description: 'Controlling the sales force of your business.'
+  
   # Palabras clave
   Escritorio: 'Dashboard'
   Empleados: 'Employees'
@@ -85,6 +89,7 @@ en:
   Procesador: 'Processed'
   Nueva_Venta: 'New sale'
   Revisar_ventas: 'Review reserved sales'
+  Informarse: 'More info'
 
 
 

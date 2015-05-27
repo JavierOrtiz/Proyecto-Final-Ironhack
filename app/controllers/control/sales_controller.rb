@@ -23,7 +23,8 @@ class Control::SalesController < ApplicationController
         if @sale.status == "Pagado"
             @sale.processed = Date.today
         end
-        @sale.save
+        @sale.save!
+        redirect_to control_sales_path, notice: 'Venta creada correctamente'
     end
     
     def destroy

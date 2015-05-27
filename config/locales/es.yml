@@ -1,12 +1,69 @@
 es:
-    hello: "Hello world"
+    # Home
+    Home_titulo: 'Gestor de equipos'
+    Home_description: 'Control de fuerzas de ventas para tu negocio.'
+
+    # Palabras clave
     Escritorio: 'Escritorio'
-    Estadisticas_rapidas: 'Estadisticas rapidas'
     Empleados: 'Empleados'
     Eventos: 'Eventos'
     Ventas: 'Ventas'
-    Beneficios: 'Beneficios'
-    Ver_detalles: 'Ver detalles'
     Noticias: 'Noticias'
     Actividad: 'Actividad'
+    Beneficios: 'Beneficios'
+    Mensajes: 'Mensajes'
+    Informes: 'Informes'
     Moneda: '€'
+
+
+    # Contenido de relleno
+    Limite_plan: 'Limite de plan alcanzado'
+    Estadisticas_rapidas: 'Estadisticas rapidas'
+    Ver_detalles: 'Ver detalles'
+    Panel_Ventas: 'Panel de ventas'
+    Ver_todas: 'Ver todo'
+    Lista: 'Lista'
+    Activos: 'Activos'
+    Disponibles: 'Disponibles'
+    Antiguos: 'Antiguos'
+    Ajustes: 'Ajustes'
+    Redactar: 'Escribir mensaje'
+    Mensajes_enviados: 'Mensajes enviados'
+    Leido: 'Leido'
+    No_leido: 'No leido'
+    Bandeja_entrada: 'Bandeja de entrada'
+    Nuevo_correo: 'Mensaje nuevo'
+    Actualizar: 'Actualizar'
+    URL_Invitacion: 'URL de invitacion'
+    o_pulsa_cualquier_tecla: 'o pulsa cualquier tecla'
+    Mis_ventas: 'Mis ventas'
+    Ventas_equipo: 'Ventas de equipo'
+
+    # Tablas ventas
+    Creada: 'Creado'
+    Procesado: 'Procesado'
+    Estado: 'Estado'
+    Cantidad: 'Cantidad'
+    Evento: 'Evento'
+    Vendedor: 'Vendedor'
+    Comprador: 'Comprador'
+    Total: 'Total'
+    Acciones: 'Acciones'
+    Obtenidos: 'Obtenido'
+    Entradas_vendidas: 'Entradas vendidas'
+    Vendidas_equipo: 'Entradas vendidas por equipo'
+    Obtenidos_equipo: 'Obtenidos por equipo'
+    Para: 'Para'
+
+
+    # Botones
+    Añadir_empleado: 'Add employee'
+    Ampliar_plan: 'Upgrade plan'
+    Solicitar: 'Take Event'
+    Soltar: 'Drop'
+    Editar: 'Edit'
+    Procesar: 'Process'
+    Procesador: 'Processed'
+    Nueva_Venta: 'New sale'
+    Revisar_ventas: 'Review reserved sales'
+    Informarse: 'More info'

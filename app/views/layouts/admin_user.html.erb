@@ -15,6 +15,7 @@
         <!-- Bootstrap Core CSS -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="/assets/css/animate.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/flag-icon.css">
 
 
         <!-- Custom CSS -->
@@ -54,7 +55,7 @@
                             <a href="<%= control_index_path %>"><i class="fa fa-fw fa-dashboard"></i> <%= t('Escritorio') %></a>
                         </li>
                         <li>
-                            <a href="<%= control_employees_path %>"><i class="fa fa-fw fa-users"></i> <%= t('Employees') %></a>
+                            <a href="<%= control_employees_path %>"><i class="fa fa-fw fa-users"></i> <%= t('Empleados') %></a>
                         </li>
                         <li>
                             <a href="<%= control_events_path %>"><i class="fa fa-fw fa-star"></i> <%= t('Eventos') %></a>
@@ -74,10 +75,17 @@
                                 <li><a href="#"><%= t('Eventos') %>: <%= current_user.events.size %>/<%= current_user.plan.max_events %> </a></li>
                             </ul>
                         </li>
-                        <% end %>  
+                        <% end %>                         
                         <li>
                             <a href="<%= control_messages_path %>"><span class="label label-danger"><i class="fa fa-envelope-o"></i> <%= Message.get_unread_messages(current_user.id).size %> <%= t('Mensajes') %> </span> </a>
                         </li> 
+                        <li>
+                            <% if I18n.locale == I18n.default_locale %>
+                            <%= link_to "English", :locale=>'en'%>
+                            <% else %>
+                            <%= link_to "Español", :locale=>'es' %>
+                            <%end%>
+                            </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-at"></i><% if current_user %> <%= current_user.name %> <% end %> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -85,7 +93,7 @@
                                 <li class="divider"></li>
                                 <li><a href="<%= destroy_user_session_path %>"><i class="fa fa-fw fa-close"></i> Logout</a></li>
                             </ul>
-                        </li>
+                        </li>                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
