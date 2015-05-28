@@ -9,6 +9,7 @@ class SauronController < ApplicationController
         @events = Event.all
         @benefits = Sale.get_total("total")
         @messages = Message.all
+        @peticiones = User.where status: 'esperando'
         users = {name: 'Usuarios', data: User.group_by_day(:created_at).count()}
         sales = {name: 'Ventas', data: Sale.group_by_day(:created_at).count()}
         events = {name: 'Eventos', data: Event.group_by_day(:created_at).count()}
@@ -24,8 +25,11 @@ class SauronController < ApplicationController
     end
     
     def show_events
-        @groups = User.get_active()
-        @groups_blocks = User.get_blocked()
+        @events = Event.order(:created_at)
+    end
+    
+    def show_petitions
+        @peticiones = User.where status: 'esperando'
     end
     
     def site_settings

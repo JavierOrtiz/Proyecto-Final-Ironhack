@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     layout :layout_by_resource
     before_filter :configure_permitted_parameters, if: :devise_controller?
 
-    
+    # Definimos los lenguajes de la web
     def set_locale
         I18n.locale = params[:locale] || I18n.default_locale
     end
@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     def default_url_options(options={})
         { locale: I18n.locale }
     end
+    
     # Declaramos variables globales para recurrir a datos usados habitualmente
     def current_boss
         @currentBoss ||= current_user.boss

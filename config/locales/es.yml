@@ -38,6 +38,8 @@ es:
     o_pulsa_cualquier_tecla: 'o pulsa cualquier tecla'
     Mis_ventas: 'Mis ventas'
     Ventas_equipo: 'Ventas de equipo'
+    Soliciar_cuenta: 'Solicitar cuenta gratuita'
+
 
     # Tablas ventas
     Creada: 'Creado'
@@ -66,4 +68,4 @@ es:
     Procesador: 'Processed'
     Nueva_Venta: 'New sale'
     Revisar_ventas: 'Review reserved sales'
-    Informarse: 'More info'
+    Informarse: 'Mas informacion'

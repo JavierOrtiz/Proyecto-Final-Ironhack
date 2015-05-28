@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-6 well">
+
+        <div class="media">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img src="<%= @event.photo %>" alt="" class="media-object">
+                </a>
+            </div>
+            <div class="media-body">
+                <h3 class="media-heading">Informacion de usuario</h3>
+                <p><b><i class="fa fa-user"></i> Nombre:</b> <span class="pull-right"><%= @event.title %></span></p>
+                <p><b><i class="fa fa-envelope-o"></i> Email:</b> <span class="pull-right"><%= @event.house %></span></p>
+                <p><b><i class="fa fa-phone"></i> Telefono:</b> <span class="pull-right">62266448998</span></p>
+                <hr>
+                <p><b><i class="fa fa-ticket"></i> Invitacion:</b> <span class="pull-right"><%= @event.locate %></span></p>
+                <p><b><i class="fa fa-star"></i> Estado:</b> <span class="pull-right"><%= @event.status %></span></p>
+                <p><b><i class="fa fa-signal"></i> Plan:</b> <span class="pull-right"><%= @event.plan.name %></span></p>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-5 col-md-offset-1 well">
+        <h1 class="text-center">Acciones</h1>
+        <hr>
+        <a href="" class="btn btn-success btn-block"><i class="fa fa-envelope-o"></i> Contactar</a>
+        <a href="" class="btn btn-danger btn-block"><i class="fa fa-trash"></i> Bloquear usuario</a>
+        <a href="" class="btn btn-warning btn-block"><i class="fa fa-bell"></i> Enviar aviso</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Estadisticas rapidas</h3>
+            </div>
+            <div class="panel-body text-center">
+                <div class="col-md-3">
+                    <span class="fa-3x"><%= @event.sales.size %></span>
+                    <i class="fa fa-arrow-up fa-3x"></i>
+                    <p>ventas</p>
+                </div>
+                <div class="col-md-3">
+                    <span class="fa-3x"><%= @event.events.size %></span>
+                    <i class="fa fa-ticket fa-3x"></i>
+                    <p>Eventos</p>
+                </div>
+                <div class="col-md-3">
+                    <span class="fa-3x">43</span>
+                    <i class="fa fa-eur fa-3x"></i>
+                    <p>Ganancias</p>
+                </div>
+                <div class="col-md-3">
+                    <span class="fa-3x"><%= @event.messages.size %></span>
+                    <i class="fa fa-envelope-o fa-3x"></i>
+                    <p>Mensajes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

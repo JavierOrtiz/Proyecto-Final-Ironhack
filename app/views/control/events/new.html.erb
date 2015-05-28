@@ -6,8 +6,9 @@
         <% end %>
         <% end %>
     <h1>Crear nuevo evento <span class="pull-right"><a href="<%= control_events_path %>" class="btn btn-primary btn-xs" role="button">Volver</a></span></h1>
+    <%= form_for [:control, @event] do |f| %>
     <div class="col-md-6">
-        <%= form_for [:control, @event] do |f| %>
+        
         
         <div class="form-group">
             <%= f.label :Ubicacion %>

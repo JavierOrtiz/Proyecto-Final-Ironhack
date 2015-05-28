@@ -1,0 +1,24 @@
+<table class="table well">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Intentos</th>
+            <th>Creado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @peticiones.each do |peticion| %>    
+            <tr>
+                <td><%= peticion.id %></td>
+                <td><%= peticion.name %> <%= peticion.last_name %></td>
+                <td><%= peticion.email %></td>
+                <td><%= peticion.sign_in_count %></td>
+                <td><%= peticion.created_at %></td>
+                <td><a href="" class="btn btn-warning btn-xs">Revisar</a><a href="<%= sauron_group_block_path(peticion.id) %>" class="btn btn-primary btn-xs">Aceptar</a></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -19,12 +19,21 @@ class User < ActiveRecord::Base
     belongs_to :boss, inverse_of: :employees, :class_name => "User", :foreign_key => 'user_id'
     
     def self.get_active
-        # return self.where(user_id: nil, status: 'activo') 
-         return self.all
+        return self.where( status: 'activo') 
     end
     
     def self.get_blocked
-        return self.where(user_id: nil, status: 'bloqueado')
+        return self.where(status: 'bloqueado')
+    end
+    
+    def self.change_status(id)
+        @blocked = self.find(id)
+        if @blocked.status != 'activo'
+            @blocked.status = 'activo' 
+        else
+            @blocked.status = 'bloqueado'
+        end
+        @blocked.save
     end
     
     def self.message_group!(sender, group_id, params)

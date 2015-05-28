@@ -24,7 +24,7 @@ class Control::SalesController < ApplicationController
             @sale.processed = Date.today
         end
         @sale.save!
-        redirect_to control_sales_path, notice: 'Venta creada correctamente'
+        redirect_to control_sale_path, notice: 'Venta creada correctamente'
     end
     
     def destroy

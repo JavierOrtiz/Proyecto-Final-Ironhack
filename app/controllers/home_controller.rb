@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
     
     def index
+        @user = User.new
     end
     
     def invite
@@ -16,13 +17,23 @@ class HomeController < ApplicationController
         end
     end
     def create
-        @user = User.new user_params
-        @boss = User.find_by_invitationHash session[:invitationHash]
-        @user.user_id = @boss.id
-        if @user.save
-            redirect_to root_path
+        if session[:invitationHash]
+            @user = User.new user_params
+            @boss = User.find_by_invitationHash session[:invitationHash]
+            @user.user_id = @boss.id
+            if @user.save
+                redirect_to root_path
+            else
+                render :new
+            end
         else
-            render :new
+            @user = User.new user_params  
+            @user.status = 'esperando'
+            if @user.save
+                redirect_to root_path, notice: 'Su cuenta se registro correctamente. Cuando sea aprobada recibiras un correo con informacion de como empezar.'
+            else
+                redirect_to root_path, notice: 'Hubo un error al registrar su cuenta, intentelo de nuevo por favor.'
+            end
         end
     end 
 

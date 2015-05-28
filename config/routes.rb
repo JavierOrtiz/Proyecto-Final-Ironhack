@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
 
         get '/sauron/groups' => 'sauron#show_groups'
+        get '/sauron/events' => 'sauron#show_events'
+        get '/sauron/petitions' => 'sauron#show_petitions'
         get '/sauron/groups/:id/block' => 'sauron/groups#change_status', as: :sauron_group_block
 
         get '/invitacion' => 'devise/registrations#new'

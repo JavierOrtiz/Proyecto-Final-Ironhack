@@ -15,14 +15,8 @@ class Sauron::GroupsController < ApplicationController
     
     def change_status
         # Buscamos el usuario a bloquear, si es activo, invertimos.
-        @blocked = User.find params[:id]
-        if @blocked.status == 'activo'
-            @blocked.status = 'bloqueado' 
-        else
-            @blocked.status = 'activo'
-        end
-        @blocked.save
-        redirect_to sauron_groups_path, alert: 'Grupo cambiado a ' + @blocked.status + ' correctamente'
+        User.change_status(params[:id])
+        redirect_to :back, alert: 'Actualizado correctamente'
     end
     
     private
