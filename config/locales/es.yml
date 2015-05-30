@@ -59,13 +59,13 @@ es:
 
 
     # Botones
-    Añadir_empleado: 'Add employee'
-    Ampliar_plan: 'Upgrade plan'
-    Solicitar: 'Take Event'
-    Soltar: 'Drop'
-    Editar: 'Edit'
-    Procesar: 'Process'
-    Procesador: 'Processed'
-    Nueva_Venta: 'New sale'
-    Revisar_ventas: 'Review reserved sales'
+    Añadir_empleado: 'Añadir empleado'
+    Ampliar_plan: 'Ampliar plan'
+    Solicitar: 'Solicitar evento'
+    Soltar: 'Soltar evento'
+    Editar: 'Editar'
+    Procesar: 'Procesar'
+    Procesador: 'Procesado'
+    Nueva_Venta: 'Nueva venta'
+    Revisar_ventas: 'Revisar ventas reservadas'
     Informarse: 'Mas informacion'

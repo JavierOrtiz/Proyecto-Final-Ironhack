@@ -1,0 +1,27 @@
+
+
+<div class="col-md-9">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Venta Nº: <%= @sale.id %></h3>
+        </div>
+        <div class="panel-body">
+            <p><b><i class="fa fa-home"></i> Fiesta:</b> <span class="pull-right"><%= @sale.event.title %></span></p><hr>
+            <p><b><i class="fa fa-user"></i> Vendedor:</b> <span class="pull-right"><%= @sale.user.name %></span></p><hr>
+            <p><b><i class="fa fa-user"></i> Comprador:</b> <span class="pull-right"><%= @sale.buyer %></span></p><hr>
+            <p><b><i class="fa fa-phone"></i> Tlf:</b> <span class="pull-right"><%= @sale.phone %></span></p><hr>
+            <p><b><i class="fa fa-envelope-o"></i> Email:</b> <span class="pull-right"><%= @sale.email %></span></p><hr>
+            <p><b><i class="fa fa-ticket"></i> Cantidad:</b> <span class="pull-right"><%= @sale.cuantity %></span></p><hr>
+            <p><b><i class="fa fa-money"></i> Total:</b> <span class="pull-right"><%= @sale.total %></span></p><hr>
+            <p><b><i class="fa fa-cubes"></i> Estado:</b> <span class="pull-right"><%= @sale.status %></span></p><hr>
+            <p><b><i class="fa fa-calendar"></i> Creada:</b> <span class="pull-right"><%= @sale.created_at.strftime('%d - %B - %Y') %></span></p>
+        </div>
+    </div>
+</div>
+<div class="col-md-3">
+    <a href="<%= new_control_sale_path %>" class="btn btn-danger btn-block"><i class="fa fa-trash"></i> <%= t('Eliminar venta') %></a>
+    <a href="#" class="btn btn-warning btn-block"><i class="fa fa-key"></i> <%= t('Modificar venta') %></a>
+    <a href="#" class="btn btn-success btn-block"><i class="fa fa-money"></i> <%= t('Activar venta') %></a>
+
+
+</div>

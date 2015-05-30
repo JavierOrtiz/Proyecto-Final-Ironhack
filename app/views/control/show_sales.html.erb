@@ -1,6 +1,6 @@
 
 
-<div class="col-md-8">
+<div class="col-md-9">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> <%= t('Panel_Ventas') %></h3>
@@ -19,6 +19,7 @@
                             <th><%= t('Evento') %></th>
                             <th><%= t('Vendedor') %></th>
                             <th><%= t('Comprador') %></th>
+                            <th><%= t('Commission') %></th>
                             <th><%= t('Total') %></th>
                             <th><%= t('Acciones') %></th>
                         </tr>
@@ -38,11 +39,12 @@
                                 <td><%= sale.event.title %></td>    
                                 <td><%= sale.user.name %></td>    
                                 <td><%= sale.buyer %></td>
+                                <td><%= sale.cuantity * sale.event.commission.to_f %> <i class="fa fa-eur"></i></td>
                                 <td><%= sale.total %> <i class="fa fa-eur"></i></td>
                                 <% if sale.status != "Pagado" %>
-                            <td><a href="#" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> <%= t('Procesar') %></a></td>
+                            <td><a href="<%= control_sale_process_path(sale.id) %>" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> <%= t('Procesar') %></a></td>
                                 <% else %>
-                            <td><a href="#" class="btn btn-default btn-xs"><%= t('Procesado') %></a></td>
+                            <td><a href="<%= control_sale_path(sale.id) %>" class="btn btn-default btn-xs"><i class="fa fa-eye"></i> <%= t('Ver_Venta') %></a></td>
                                 <% end %>
 
                             </tr>
@@ -62,7 +64,9 @@
                             <th><%= t('Evento') %></th>
                             <th><%= t('Vendedor') %></th>
                             <th><%= t('Comprador') %></th>
+                            <th><%= t('Commission') %></th>
                             <th><%= t('Total') %></th>
+                            <th><%= t('Acciones') %></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,7 +84,13 @@
                             <td><%= sale.event.title %></td>    
                             <td><%= sale.user.name %></td>    
                             <td><%= sale.buyer %></td>
+                            <td><%= sale.cuantity * sale.event.commission.to_f %> <i class="fa fa-eur"></i></td>
                             <td><%= sale.total %> <i class="fa fa-eur"></i></td>
+                            <% if sale.status != "Pagado" %>
+                            <td><a href="<%= control_sale_process_path(sale.id) %>" class="btn btn-info btn-xs"><i class="fa fa-spinner"></i> <%= t('Procesar') %></a></td>
+                            <% else %>
+                            <td><a href="<%= control_sale_path(sale.id) %>" class="btn btn-default btn-xs"><i class="fa fa-eye"></i> <%= t('Ver_Venta') %></a></td>
+                            <% end %>
                         </tr>
                         <% end %>
                     </tbody>
@@ -92,7 +102,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-4">
+<div class="col-md-3">
     <a href="<%= new_control_sale_path %>" class="btn btn-success btn-block"><i class="fa fa-credit-card"></i> <%= t('Nueva_Venta') %></a>
     <a href="#" class="btn btn-warning btn-block"><i class="fa fa-eye"></i> <%= t('Revisar_ventas') %></a>
     <h1><%= @my_total[1]  %> <small><%= t('Entradas_vendidas') %></small></h1>

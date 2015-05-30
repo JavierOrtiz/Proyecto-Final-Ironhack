@@ -14,10 +14,16 @@ class ControlController < ApplicationController
         
         @sales = 0
         @commission = 0
+
         current_sales.each do |sale|
             @sales += sale.cuantity 
-            @commission += sale.event.commission.to_i * sale.cuantity
+            @commission += sale.event.commission.to_f * sale.cuantity
         end
+        
+#        current_user.calculate_total_quantity(current_sales)
+#        current_user.calculate_total_commission(current_sales)
+
+        
 #        current_employees.each do |employee|
 #            @sales += Sale.get_sum(employee.id, "cuantity")
 #        end
@@ -96,6 +102,7 @@ class ControlController < ApplicationController
         else
             @boss_total = [0,0]
         end
+        
         @total_team = 0
         @total_entradas = 0
         current_employees.each do |employee|

@@ -9,8 +9,13 @@ class Control::SalesController < ApplicationController
         @array_events = @events.map { |event| [event.title, event.id] }
     end
     
-    def show
-
+    def show        
+        @sale = Sale.find params[:id]
+    end
+    
+    def active_sale
+        Sale.change_status(params[:id])
+        redirect_to control_sales_path, notice: 'Venta validada correctamente'
     end
     
     def create
@@ -24,7 +29,7 @@ class Control::SalesController < ApplicationController
             @sale.processed = Date.today
         end
         @sale.save!
-        redirect_to control_sale_path, notice: 'Venta creada correctamente'
+        redirect_to control_sale_path(@sale), notice: 'Venta creada correctamente'
     end
     
     def destroy

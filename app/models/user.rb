@@ -1,5 +1,6 @@
 require 'securerandom'
 class User < ActiveRecord::Base
+    attr_accessor :commission, :cuantity
   # Include default devise modules. Others available are:
   #  :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,6 +27,20 @@ class User < ActiveRecord::Base
         return self.where(status: 'bloqueado')
     end
     
+#    def calculate_total_commission(sales)
+#        @commission = 0
+#        sales.each do |sale|
+#            @commission += sale.event.commission.to_f * sale.cuantity
+#        end
+#    end
+#
+#    def calculate_total_cuantity(sales)
+#        @cuantity = 0
+#        sales.each do |sale|
+#            @cuantity += sale.cuantity
+#        end
+#    end
+        
     def self.change_status(id)
         @blocked = self.find(id)
         if @blocked.status != 'activo'

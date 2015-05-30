@@ -17,8 +17,6 @@ Rails.application.routes.draw do
         get '/control/messages' => 'control#show_messages', as: :control_messages
         get '/control/messages/:id/read' => 'control/messages#mark_read', as: :control_read_message
 
-
-
         get '/sauron/groups' => 'sauron#show_groups'
         get '/sauron/events' => 'sauron#show_events'
         get '/sauron/petitions' => 'sauron#show_petitions'
@@ -28,6 +26,7 @@ Rails.application.routes.draw do
 
         get '/control/events/take/:id' => 'control/events#take', as: :control_event_take
         get '/control/events/drop/:id' => 'control/events#drop', as: :control_event_drop
+        get '/control/sales/:id/active/' => 'control/sales#active_sale', as: :control_sale_process
 
         namespace :sauron do
             resources :groups

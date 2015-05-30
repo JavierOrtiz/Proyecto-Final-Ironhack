@@ -5,6 +5,10 @@ class Control::EventsController < ApplicationController
     
     def show
         @event = Event.find params[:id]
+        @total = 0
+        @event.sales.each do |sale|
+            @total += sale.cuantity
+        end        
     end
     
     def new
@@ -14,7 +18,6 @@ class Control::EventsController < ApplicationController
     def create
         # Recibimos parametros filtrados y añadimos extras
         @event = Event.new event_params
-        binding.pry
         @event.user_id = current_user.id
         @event.flyer = 'http://placehold.it/400x600'
         # Si se guarda correctamente hacemos push en la tabla Assignations y volvemos a directorio eventos

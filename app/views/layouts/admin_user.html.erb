@@ -73,6 +73,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="text-danger"><i class="fa fa-exclamation-triangle warning"></i> <%= t('Limite_plan') %></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#"><%= t('Eventos') %>: <%= current_user.events.size %>/<%= current_user.plan.max_events %> </a></li>
+                                <li><a href="#"><%= t('Empleados') %>: <%= current_user.employees.size %>/<%= current_user.plan.max_users %> </a></li>
+                                <li><a href="#" class="btn btn-warning btn-block btn-xs">Ampliar plan</a></li>
                             </ul>
                         </li>
                         <% end %>                         
